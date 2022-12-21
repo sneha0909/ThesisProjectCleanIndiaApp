@@ -1,0 +1,29 @@
+.pledge-icon{
+    float: left;
+    border-style: solid;
+    text-align: center;
+
+}
+
+.pledge-description{
+    overflow: hidden;
+    border-style: solid;
+    
+}
+
+.pledge-description h3 {
+    text-align: center;
+    color: green;
+}
+
+.pledge-button {
+
+    text-align: center;
+}
+
+
+@media screen and (max-width: 960px) {
+    .pledge-icon{
+        float: none;
+    }
+}
