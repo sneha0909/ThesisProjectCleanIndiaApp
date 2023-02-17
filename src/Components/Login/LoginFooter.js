@@ -1,11 +1,11 @@
 import React from 'react'
-import '../Login/LoginFooter.css'
+import '../Login/LoginFooter.css';
 import { Link } from "react-router-dom"
 import myLogo from '../../images/nic_logo.png';
 
 function LoginFooter() {
     return (
-        <div className='footer-container'>
+        <div className='footer-container3'>
 
             <div className='footer-link-wrapper'>
                 <Link to="/" className="footer-logo">

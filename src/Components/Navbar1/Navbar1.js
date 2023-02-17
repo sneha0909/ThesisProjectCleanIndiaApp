@@ -9,6 +9,7 @@ import logoIn from '../../images/ico-insta.png';
 import logoGlobe from '../../images/globe3.jpg';
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
+import useDarkMode from '../../Hooks/useDarkMode';
 
 
 function Navbar1() {
@@ -28,30 +29,19 @@ function Navbar1() {
     i18n.changeLanguage(e.target.value);
   }
 
-  
-  const handleRedirect = ()  => {
-    
+
+  const handleRedirect = () => {
+
     if (window.confirm('You are being redirected to an external website. Please note that MyGov Website cannot be held responsible for external websites content & privacy policies.')) {
-      
+
       window.open(url, '_blank')
-    } 
+    }
     //window.confirm('You are being redirected to an external website. Please note that MyGov Website cannot be held responsible for external websites content & privacy policies.');
 
   }
 
-  const [theme, setTheme] = useState("light-theme");
-  const toggleTheme = () => {
-    if(theme === 'light-theme'){
-      setTheme('dark-theme');
-    }
-    else {
-      setTheme('light-theme');
-    }
-  }
-
-  useEffect(() => {
-    document.body.className = theme;
-  } ,[]);
+  const [darkMode, toggleDarkMode] = useDarkMode();
+  const [fontSize, setFontSize] = useState(16);
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true)
@@ -71,13 +61,13 @@ function Navbar1() {
 
   return (
     <>
-      <nav className="navbar2">
+      <nav className="navbar2" >
         <div className="navbar2-container" >
           {/* <Link to={{ pathname: "https://www.india.gov.in/"}} className="navbar2-logo"> */}
-          <div className="navbar2-logo" onClick={() => handleRedirect()  }>
-            
+          <div className="navbar2-logo" onClick={() => handleRedirect()}>
+
             <img src={myLogo} />
-            
+
             {t("Governmentofindia")}
 
           </div>
@@ -93,7 +83,7 @@ function Navbar1() {
               </Link>
             </li>
             <li className='nav2-item'>
-              <Link to='/loggedin' className='nav2-links' onClick={closeMobileMenu}>
+              <Link to='/login' className='nav2-links' onClick={closeMobileMenu}>
                 <i class="fa fa-user" aria-hidden="true"></i>
                 {t("Login")}
               </Link>
@@ -133,9 +123,12 @@ function Navbar1() {
                 <option value="hi">Hindi</option>
               </select>
             </li>
-            <li className='nav2-item'>
-              <button onClick={() => toggleTheme()}>A</button>
-
+            <li className="nav2-item">
+              <button onClick={() => toggleDarkMode()}>A</button>
+            </li>
+            <li className='nav2-item' >
+              <button onClick={() => setFontSize(fontSize + 5)}>+</button>
+              <button onClick={() => setFontSize(fontSize - 5)}>-</button>
             </li>
           </ul>
           {/* {button && <Button buttonStyle='btn--outline'>Register</Button>} */}

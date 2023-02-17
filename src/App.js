@@ -5,17 +5,17 @@ import HomePage from './Components/Pages/HomePage';
 import LoggedinPage from './Components/Pages/LoggedinPage';
 import RegisterPage from './Components/Pages/RegisterPage';
 import LoginPage from './Components/Pages/LoginPage';
-import React from 'react';
+import {useEffect, useState} from 'react';
+import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
 function App() {
+
+  
   return (
     <Suspense fallback={null}>
+       
       <Router>
-        {/* <Navbar1 />
-       <Navbar2 />
-       <ImageSlider images={images} />
-       <Pledge1 />
-       <Cards /> */}
+     
 
         <Routes>
 
@@ -25,7 +25,6 @@ function App() {
           <Route path="/loggedin" element={< LoggedinPage />} />
         </Routes>
 
-        {/* <Footer /> */}
       </Router>
 
     </Suspense>

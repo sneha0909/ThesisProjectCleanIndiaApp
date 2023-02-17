@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import '../Navbar2/Navbar2.css';
 import myLogo from '../../images/logo.png';
 import { useTranslation } from "react-i18next";
+import useDarkMode from '../../Hooks/useDarkMode';
+
 
 
 function Navbar2() {
@@ -13,6 +15,10 @@ function Navbar2() {
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false)
 
+    const [darkMode, toggleDarkMode] = useDarkMode();
+    
+    const [fontSize, setFontSize] = useState();
+
     const showButton = () => {
         if(window.innerWidth <= 960) {
            setButton(false) 
@@ -21,6 +27,7 @@ function Navbar2() {
         }
     };
 
+    // style={{fontSize: `${fontSize}px`}}
     window.addEventListener('resize', showButton);
 
     return (
