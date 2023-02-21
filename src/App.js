@@ -7,6 +7,7 @@ import RegisterPage from './Components/Pages/RegisterPage';
 import LoginPage from './Components/Pages/LoginPage';
 import {useEffect, useState} from 'react';
 import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import ManageComplaints from './Components/Pages/ManageComplaints';
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/loggedin" element={< LoggedinPage />} />
+          <Route path="/managecomplaints" element={< ManageComplaints />} />
+          
         </Routes>
 
       </Router>
