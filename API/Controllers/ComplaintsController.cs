@@ -13,9 +13,11 @@ using Application.Complaints;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class ComplaintsController : BaseApiController
     {
 
+        
         [HttpGet] //api/complaints
         public async Task<IActionResult> GetComplaints()
         {

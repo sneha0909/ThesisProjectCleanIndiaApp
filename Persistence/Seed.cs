@@ -28,7 +28,7 @@ namespace Persistence
                         State = "Maharashtra",
                         District = "Aurangabad",
                         MunicipalCorporation = "Municipal Corporation Aurangabad",
-                        Email = "victor@test.com",
+                        Email = "diana@test.com",
                         PhoneNumber = "9137532888",
                     }
                 };

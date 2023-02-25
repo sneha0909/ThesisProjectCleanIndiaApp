@@ -4,8 +4,8 @@ namespace Application.Core
     {
         public AppException(int statusCode, string message, string details = null)
         {
-            this.StatusCode = statusCode;
-            this.Message = message;
+            StatusCode = statusCode;
+            Message = message;
             Details = details;
         }
 
