@@ -11,8 +11,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230225033229_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230227102530_RolesAddedIdentityAdded")]
+    partial class RolesAddedIdentityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -175,6 +175,22 @@ namespace Persistence.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "c9a5b83a-22b8-4ae6-8de4-644b4a09f71e",
+                            ConcurrencyStamp = "a80d003f-3dbe-401e-9e57-5ad76d621784",
+                            Name = "Member",
+                            NormalizedName = "MEMBER"
+                        },
+                        new
+                        {
+                            Id = "563fa019-be4f-4607-9f9f-9b92dee38d55",
+                            ConcurrencyStamp = "33b8cfe8-2c84-4f1c-8658-d4f66765904e",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
