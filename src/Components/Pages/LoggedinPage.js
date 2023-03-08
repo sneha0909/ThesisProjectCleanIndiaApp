@@ -8,7 +8,7 @@ function LoggedinPage() {
     return (       
       <>
       <div className="Intro">
-        <h1>You're Logged In!</h1>      
+        {/* <h1>You're Logged In!</h1>       */}
       </div>
       <ComplaintForm/>
       </>

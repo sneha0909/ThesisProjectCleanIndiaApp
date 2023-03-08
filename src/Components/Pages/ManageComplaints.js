@@ -20,7 +20,7 @@ function ManageComplaints() {
         <List>
           {complaints.map(complaint => (
             <List.Item key={complaint.id}>
-              {complaint.complainantName}
+              {complaint.complainantFirstName}
             </List.Item>
           ))}
         </List>
