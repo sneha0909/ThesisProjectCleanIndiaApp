@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class RolesAddedIdentityAdded : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,10 +29,6 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     ComplainantName = table.Column<string>(type: "TEXT", nullable: true),
-                    State = table.Column<string>(type: "TEXT", nullable: true),
-                    District = table.Column<string>(type: "TEXT", nullable: true),
-                    MunicipalCorporation = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -41,6 +37,7 @@ namespace Persistence.Migrations
                     PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
                     SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
@@ -57,14 +54,35 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ComplaintType = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintSubType = table.Column<string>(type: "TEXT", nullable: true),
+                    DescriptionofComplaint = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationHouseNo = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationHouseName = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationAreaInAddress = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationZoneWardNo = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationArea1 = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationArea2 = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationCity = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplaintLocationPincode = table.Column<string>(type: "TEXT", nullable: true),
                     ComplainantName = table.Column<string>(type: "TEXT", nullable: true),
-                    DateOfComplaint = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    State = table.Column<string>(type: "TEXT", nullable: true),
-                    District = table.Column<string>(type: "TEXT", nullable: true),
-                    MunicipalCorporation = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressWard = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressHouseNo = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressHouseName = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressAreaInAddress = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressZoneWardNo = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressArea1 = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressArea2 = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressLandmark = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressCity = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressState = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressCountry = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressSTDCodeOfficeTelephone = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressOfficeTelephone = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressSTDCodeResidenceTelephone = table.Column<string>(type: "TEXT", nullable: true),
+                    ComplainantAddressResidenceTelephone = table.Column<string>(type: "TEXT", nullable: true),
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    Status = table.Column<string>(type: "TEXT", nullable: true)
+                    Email = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -199,12 +217,12 @@ namespace Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "563fa019-be4f-4607-9f9f-9b92dee38d55", "33b8cfe8-2c84-4f1c-8658-d4f66765904e", "Admin", "ADMIN" });
+                values: new object[] { "06123be7-e349-4692-9607-be4500ba6d07", "15fbf351-b6eb-4d0e-a8bd-65efc3c9fae3", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c9a5b83a-22b8-4ae6-8de4-644b4a09f71e", "a80d003f-3dbe-401e-9e57-5ad76d621784", "Member", "MEMBER" });
+                values: new object[] { "77ca9182-93cd-4bbd-a3ad-4bfbeda38442", "5c06e687-b231-4f14-9477-ba509347d2db", "Member", "MEMBER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

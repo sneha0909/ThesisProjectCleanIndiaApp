@@ -76,11 +76,11 @@ namespace API.Controllers
             {
                 ComplainantName = registerDto.ComplainantName,
                 UserName = registerDto.Username,
-                State = registerDto.State,
-                District = registerDto.District,
-                MunicipalCorporation = registerDto.MunicipalCorporation,
+                // State = registerDto.State,
+                // District = registerDto.District,
+                // MunicipalCorporation = registerDto.MunicipalCorporation,
                 Email = registerDto.Email,
-                PhoneNumber = registerDto.PhoneNumber
+                // PhoneNumber = registerDto.PhoneNumber
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
@@ -109,11 +109,11 @@ namespace API.Controllers
                 ComplainantName = user.ComplainantName,
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
-                State = user.State,
-                District = user.District,
-                MunicipalCorporation = user.MunicipalCorporation,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
+                // State = user.State,
+                // District = user.District,
+                // MunicipalCorporation = user.MunicipalCorporation,
+                // Email = user.Email,
+                // PhoneNumber = user.PhoneNumber,
                 Image = null
             };
         }

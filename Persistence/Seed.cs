@@ -13,23 +13,23 @@ namespace Persistence
                 {
                     new AppUser
                     {
-                        ComplainantName = "Victor",
-                        UserName = "victor",
-                        State = "Madhya Pradesh",
-                        District = "Betul",
-                        MunicipalCorporation = "Municipal Corporation Betul",
-                        Email = "victor@test.com",
-                        PhoneNumber = "9137532999",
+                        ComplainantName = "Harry Potter",
+                        UserName = "harry",
+                        // State = "Madhya Pradesh",
+                        // District = "Betul",
+                        // MunicipalCorporation = "Municipal Corporation Betul",
+                        Email = "harry@test.com"
+                        // PhoneNumber = "9137532999",
                     },
                     new AppUser
                     {
-                        ComplainantName = "Diana",
-                        UserName = "diana",
-                        State = "Maharashtra",
-                        District = "Aurangabad",
-                        MunicipalCorporation = "Municipal Corporation Aurangabad",
-                        Email = "diana@test.com",
-                        PhoneNumber = "9137532888",
+                        ComplainantName = "Hermione Granger",
+                        UserName = "hermione",
+                        // State = "Maharashtra",
+                        // District = "Aurangabad",
+                        // MunicipalCorporation = "Municipal Corporation Aurangabad",
+                        Email = "granger@test.com"
+                        // PhoneNumber = "9137532888",
                     }
                 };
 
@@ -56,69 +56,102 @@ namespace Persistence
             {
                 new Complaint
                 {
+                    ComplaintType = "SEWAGE",
+                    ComplaintSubType = "REPAIRING",
+                    DescriptionofComplaint = "The sewage pipes are damaged and the dirty water is coming on roads",
+                    ComplaintLocationHouseNo = "11",
+                    ComplaintLocationHouseName = "Shanti Niwas",
+                    ComplaintLocationAreaInAddress = "Gauthana",
+                    ComplaintLocationZoneWardNo = "D2",
+                    ComplaintLocationArea1 = "Gauthana",
+                    ComplaintLocationArea2 = "Gauthana",
+                    ComplaintLocationCity = "Betul",
+                    ComplaintLocationPincode = "460001",
                     ComplainantName = "Aman Jindal",
-                    DateOfComplaint = DateTime.UtcNow.AddMonths(-2),
-                    State = "Assam",
-                    District = "Sonitpur",
-                    MunicipalCorporation = "Sonitpur Municipal Corporation ",
-                    Email = "amanjindal@gmail.com",
+                    ComplainantAddressWard = "WARD 1",
+                    ComplainantAddressHouseNo = "11",
+                    ComplainantAddressHouseName = "Shanti Niwas",
+                    ComplainantAddressAreaInAddress = "Gauthana",
+                    ComplainantAddressZoneWardNo = "D2",
+                    ComplainantAddressArea1 = "Gauthana",
+                    ComplainantAddressArea2 = "Gauthana",
+                    ComplainantAddressLandmark = "Durga Devi Temple",
+                    ComplainantAddressCity = "Betul",
+                    ComplainantAddressState = "Madhya Pradesh",
+                    ComplainantAddressCountry = "India",
+                    ComplainantAddressSTDCodeOfficeTelephone = "+912",
+                    ComplainantAddressOfficeTelephone = "1234098",
+                    ComplainantAddressSTDCodeResidenceTelephone = "+912",
+                    ComplainantAddressResidenceTelephone = "1234098",
                     PhoneNumber = "73649824",
-                    Status = "Complaint in Review"
+                    Email = "amanjindal@gmail.com"
+                    
+                    
                 },
                 new Complaint
                 {
+                    ComplaintType = "GARBAGE COLLECTION",
+                    ComplaintSubType = "DELAY IN GARBAGE COLLECTION",
+                    DescriptionofComplaint = "There's no garbage collection from past 1 week and bins are overflowing, dogs are taking out the garbage and spreading on all over the streets",
+                    ComplaintLocationHouseNo = "15",
+                    ComplaintLocationHouseName = "Liana House",
+                    ComplaintLocationAreaInAddress = "Tikari",
+                    ComplaintLocationZoneWardNo = "D10",
+                    ComplaintLocationArea1 = "Tikari",
+                    ComplaintLocationArea2 = "Tikari",
+                    ComplaintLocationCity = "Betul",
+                    ComplaintLocationPincode = "460001",
                     ComplainantName = "Aarav Kumar",
-                    DateOfComplaint = DateTime.UtcNow.AddMonths(-1),
-                    State = "Arunachal Pradesh",
-                    District = "East Siang",
-                    MunicipalCorporation = "East Siang Municipal Corporation",
-                    Email = "aaravkumar@gmail.com",
+                    ComplainantAddressWard = "WARD 5",
+                    ComplainantAddressHouseNo = "15",
+                    ComplainantAddressHouseName = "Liana House",
+                    ComplainantAddressAreaInAddress = "Tikari",
+                    ComplainantAddressZoneWardNo = "D10",
+                    ComplainantAddressArea1 = "Tikari",
+                    ComplainantAddressArea2 = "Tikari",
+                    ComplainantAddressLandmark = "ELC Church",
+                    ComplainantAddressCity = "Betul",
+                    ComplainantAddressState = "Madhya Pradesh",
+                    ComplainantAddressCountry = "India",
+                    ComplainantAddressSTDCodeOfficeTelephone = "+912",
+                    ComplainantAddressOfficeTelephone = "45487548",
+                    ComplainantAddressSTDCodeResidenceTelephone = "+912",
+                    ComplainantAddressResidenceTelephone = "45487548",           
                     PhoneNumber = "1234567",
-                    Status = "Complaint Resolved"
+                    Email = "aaravkumar@gmail.com" 
+                    
                 },
                 new Complaint
                 {
-                    ComplainantName = "Amisha Gangwani",
-                    DateOfComplaint = DateTime.UtcNow.AddMonths(1),
-                    State = "Karnataka",
-                    District = "Bidar",
-                    MunicipalCorporation = "Bidar Municipal Corporation",
-                    Email = "amishagangwani@gmail.com",
+                    ComplaintType = "SEWAGE",
+                    ComplaintSubType = "REPAIRING",
+                    DescriptionofComplaint = "The sewage pipes are damaged from past 1 week and the dirty water is coming on roads and causing Diseases like Malaria",
+                    ComplaintLocationHouseNo = "12",
+                    ComplaintLocationHouseName = "Durga Niwas",
+                    ComplaintLocationAreaInAddress = "Sadar",
+                    ComplaintLocationZoneWardNo = "D3",
+                    ComplaintLocationArea1 = "Sadar",
+                    ComplaintLocationArea2 = "Sadar",
+                    ComplaintLocationCity = "Betul",
+                    ComplaintLocationPincode = "460001",
+                    ComplainantName = "Amisha Gangwani", 
+                    ComplainantAddressWard = "WARD 2",
+                    ComplainantAddressHouseNo = "12",
+                    ComplainantAddressHouseName = "Durga Niwas",
+                    ComplainantAddressAreaInAddress = "Sadar",
+                    ComplainantAddressZoneWardNo = "D3",
+                    ComplainantAddressArea1 = "Sadar",
+                    ComplainantAddressArea2 = "Sadar",
+                    ComplainantAddressLandmark = "Samsung Showroom",
+                    ComplainantAddressCity = "Betul",
+                    ComplainantAddressState = "Madhya Pradesh",
+                    ComplainantAddressCountry = "India",
+                    ComplainantAddressSTDCodeOfficeTelephone = "+912",
+                    ComplainantAddressOfficeTelephone = "987654321",
+                    ComplainantAddressSTDCodeResidenceTelephone = "+912",
+                    ComplainantAddressResidenceTelephone = "987654321",           
                     PhoneNumber = "7654321",
-                    Status = "Complaint Filed"
-                },
-                new Complaint
-                {
-                    ComplainantName = "Varun Singh",
-                    DateOfComplaint = DateTime.UtcNow.AddMonths(2),
-                    State = "Mizoram",
-                    District = "Aizawl",
-                    MunicipalCorporation = "Aizawl Municipal Corporation",
-                    Email = "varunsingh@gmail.com",
-                    PhoneNumber = "0987654",
-                    Status = "Action taken"
-                },
-                new Complaint
-                {
-                    ComplainantName = "Kaira Singh",
-                    DateOfComplaint = DateTime.UtcNow.AddMonths(3),
-                    State = "Manipur",
-                    District = "Imphal East ",
-                    MunicipalCorporation = "Imphal East Municipal Corporation",
-                    Email = "kairasingh@gmail.com",
-                    PhoneNumber = "546789546",
-                    Status = "Complaint filed"
-                },
-                new Complaint
-                {
-                    ComplainantName = "Somya Tripathi",
-                    DateOfComplaint = DateTime.UtcNow.AddMonths(4),
-                    State = "Madhya Pradesh",
-                    District = "Betul",
-                    MunicipalCorporation = "Betul Municipal Corporation",
-                    Email = "somyatripathi@gmail.com",
-                    PhoneNumber = "65345638759",
-                    Status = "Complaint Resolved"
+                    Email = "amishagangwani@gmail.com"    
                 },
                
             };

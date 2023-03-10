@@ -32,9 +32,6 @@ namespace Persistence.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("District")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
@@ -46,9 +43,6 @@ namespace Persistence.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MunicipalCorporation")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedEmail")
@@ -69,9 +63,6 @@ namespace Persistence.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("State")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -99,28 +90,91 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ComplainantAddressArea1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressArea2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressAreaInAddress")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressCity")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressCountry")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressHouseName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressHouseNo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressLandmark")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressOfficeTelephone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressResidenceTelephone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressSTDCodeOfficeTelephone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressSTDCodeResidenceTelephone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressState")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressWard")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplainantAddressZoneWardNo")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ComplainantName")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateOfComplaint")
+                    b.Property<string>("ComplaintLocationArea1")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("District")
+                    b.Property<string>("ComplaintLocationArea2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintLocationAreaInAddress")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintLocationCity")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintLocationHouseName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintLocationHouseNo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintLocationPincode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintLocationZoneWardNo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintSubType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ComplaintType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DescriptionofComplaint")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("MunicipalCorporation")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("State")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Status")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -177,15 +231,15 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c9a5b83a-22b8-4ae6-8de4-644b4a09f71e",
-                            ConcurrencyStamp = "a80d003f-3dbe-401e-9e57-5ad76d621784",
+                            Id = "77ca9182-93cd-4bbd-a3ad-4bfbeda38442",
+                            ConcurrencyStamp = "5c06e687-b231-4f14-9477-ba509347d2db",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "563fa019-be4f-4607-9f9f-9b92dee38d55",
-                            ConcurrencyStamp = "33b8cfe8-2c84-4f1c-8658-d4f66765904e",
+                            Id = "06123be7-e349-4692-9607-be4500ba6d07",
+                            ConcurrencyStamp = "15fbf351-b6eb-4d0e-a8bd-65efc3c9fae3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

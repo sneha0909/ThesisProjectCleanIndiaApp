@@ -1,9 +1,11 @@
 using Application.Photos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class PhotosController : BaseApiController
     {
         [HttpPost]
