@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AuthServices from '../../Services/AuthServices';
 import { useNavigate } from 'react-router-dom';
-
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -19,11 +18,7 @@ function RegisterForm() {
         complainantName: '',
         username: '',
         password: '',
-        state: '',
-        district: '',
-        municipalCorporation: '',
         email: '',
-        phoneNumber: '', 
         Message: ''
                
     };
@@ -33,12 +28,8 @@ function RegisterForm() {
         complainantNameFlag: false,
         passwordFlag: false,
         usernameFlag: false,
-        stateFlag: false,
-        districtFlag: false,
-        municipalCorporationFlag: false,
         emailFlag: false,
-        phoneNumberFlag: false,
-        open: false,
+        open: false
         
     };
 
@@ -67,11 +58,7 @@ function RegisterForm() {
             complainantNameFlag: false,
             usernameFlag: false,
             passwordFlag: false,
-            stateFlag: false,
-            districtFlag: false,
-            municipalCorporationFlag: false,
-            emailFlag: false,
-            phoneNumberFlag: false,
+            emailFlag: false         
            
         })
 
@@ -84,23 +71,11 @@ function RegisterForm() {
         }
         if (values.password === '') {
             setBooleanValues({ passwordFlag: true })
-        }
-        if (values.state === '') {
-            setBooleanValues({ stateFlag: true })
-        }
-        if (values.district === '') {
-            setBooleanValues({ districtFlag: true })
-        }
-        if (values.municipalCorporation === '') {
-            setBooleanValues({ municipalCorporationFlag: true })
-        }
+        }     
         if (values.email === '') {
             setBooleanValues({ emailFlag: true })
         }
-        if (values.phoneNumber === '') {
-            setBooleanValues({ phoneNumberFlag: true })
-        }
-        
+            
     }
 
     const handleSubmit = (e) => {
@@ -110,11 +85,7 @@ function RegisterForm() {
             values.complainantName !== '' &&
             values.username !== '' &&
             values.password !== '' &&
-            values.state !== '' &&
-            values.district !== '' &&
-            values.municipalCorporation !== '' &&
-            values.email !== '' &&
-            values.phoneNumber !== '' 
+            values.email !== ''
             
         ) {
             console.log('Acceptable')
@@ -123,18 +94,12 @@ function RegisterForm() {
                 ComplainantName: values.complainantName,
                 Username: values.username,
                 Password: values.password,
-                State: values.state,
-                District: values.district,
-                MunicipalCorporation: values.municipalCorporation,
-                Email: values.email,
-                PhoneNumber: values.phoneNumber
+                Email: values.email
             }
             authService.register(data).then((data) => {
                 console.log('data : ', data)
                 if (data.data.complainantName && data.data.username && 
-                    data.data.state && data.data.district && 
-                    data.data.municipalCorporation && data.data.email && 
-                    data.data.phoneNumber) 
+                    data.data.email)
                 {
                     navigate('/login')
                 } else {
@@ -203,36 +168,6 @@ function RegisterForm() {
                                 onChange={handleValues}
                             />
                             <TextField
-                                error={setBooleanValues.stateFlag}
-                                className='TextField'
-                                name='state'
-                                label="Enter State"
-                                variant="outlined"
-                                size='small'
-                                value={values.state}
-                                onChange={handleValues}
-                            />
-                            <TextField
-                                error={setBooleanValues.districtFlag}
-                                className='TextField'
-                                name='district'
-                                label="Enter District"
-                                variant="outlined"
-                                size='small'
-                                value={values.district}
-                                onChange={handleValues}
-                            />
-                            <TextField
-                                error={setBooleanValues.municipalCorporationFlag}
-                                className='TextField'
-                                name='municipalCorporation'
-                                label="Enter Municipal Corporation"
-                                variant="outlined"
-                                size='small'
-                                value={values.municipalCorporation}
-                                onChange={handleValues}
-                            />
-                            <TextField
                                 error={setBooleanValues.emailFlag}
                                 className='TextField'
                                 name='email'
@@ -242,18 +177,7 @@ function RegisterForm() {
                                 type='email'
                                 value={values.email}
                                 onChange={handleValues}
-                            />
-                            <TextField
-                                error={setBooleanValues.phoneNumberFlag}
-                                className='TextField'
-                                name='phoneNumber'
-                                label="Enter Phone Number"
-                                variant="outlined"
-                                size='small'
-                                value={values.phoneNumber}
-                                onChange={handleValues}
-                            />
-                            
+                            />                           
                         </form>
                     </div>
                     <div className='buttons'>

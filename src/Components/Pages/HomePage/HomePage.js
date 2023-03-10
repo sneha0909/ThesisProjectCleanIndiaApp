@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Navbar1 from '../Navbar1/Navbar1';
-import Navbar2 from '../Navbar2/Navbar2';
-import ImageSlider from '../Image Slider/ImageSlider';
-import images from '../Image Slider/images';
-import Pledge1 from '../MiddlePart1/Pledge1';
-import Footer from '../Footer/Footer';
-import Cards from '../MiddlePart3/Cards';
+import Navbar1 from '../../Navbar1/Navbar1';
+import Navbar2 from '../../Navbar2/Navbar2';
+import ImageSlider from '../../Image Slider/ImageSlider';
+import images from '../../Image Slider/images';
+import Pledge1 from '../../MiddlePart1/Pledge1';
+import Footer from '../../Footer/Footer';
+import Cards from '../../MiddlePart3/Cards';
 
 function HomePage() {
 
