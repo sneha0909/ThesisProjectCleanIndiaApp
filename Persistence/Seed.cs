@@ -84,7 +84,8 @@ namespace Persistence
                     ComplainantAddressSTDCodeResidenceTelephone = "+912",
                     ComplainantAddressResidenceTelephone = "1234098",
                     PhoneNumber = "73649824",
-                    Email = "amanjindal@gmail.com"
+                    Email = "amanjindal@gmail.com",
+                    PhotoUrl = "/images/products/sb-ang1.png"
                     
                     
                 },
@@ -118,7 +119,8 @@ namespace Persistence
                     ComplainantAddressSTDCodeResidenceTelephone = "+912",
                     ComplainantAddressResidenceTelephone = "45487548",           
                     PhoneNumber = "1234567",
-                    Email = "aaravkumar@gmail.com" 
+                    Email = "aaravkumar@gmail.com",
+                    PhotoUrl = "/images/products/sb-ang1.png"
                     
                 },
                 new Complaint
@@ -151,7 +153,8 @@ namespace Persistence
                     ComplainantAddressSTDCodeResidenceTelephone = "+912",
                     ComplainantAddressResidenceTelephone = "987654321",           
                     PhoneNumber = "7654321",
-                    Email = "amishagangwani@gmail.com"    
+                    Email = "amishagangwani@gmail.com",
+                    PhotoUrl = "/images/products/sb-ang1.png"    
                 },
                
             };

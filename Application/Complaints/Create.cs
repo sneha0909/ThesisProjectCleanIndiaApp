@@ -3,6 +3,8 @@ using Application.Interfaces;
 using Domain;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -13,6 +15,9 @@ namespace Application.Complaints
         public class Command : IRequest<Result<Unit>>
         {
             public Complaint Complaint { get; set; }
+            // public IFormFile File { get; set; }
+
+            // public CreateComplaintDto createComplaintDto { get; set; }
         }
 
         public class CommandValidator : AbstractValidator<Command>
@@ -28,8 +33,15 @@ namespace Application.Complaints
             private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
 
-            public Handler(DataContext context, IUserAccessor userAccessor)
+            private readonly IComplaintPhotoAccessor _complaintPhotoAccessor;
+
+            public Handler(
+                DataContext context,
+                IUserAccessor userAccessor,
+                IComplaintPhotoAccessor complaintPhotoAccessor
+            )
             {
+                _complaintPhotoAccessor = complaintPhotoAccessor;
                 _userAccessor = userAccessor;
                 _context = context;
             }
@@ -39,17 +51,19 @@ namespace Application.Complaints
                 CancellationToken cancellationToken
             )
             {
-                var user = await _context.Users.FirstOrDefaultAsync(x => 
-                x.ComplainantName == _userAccessor.GetComplainantName());
-                
-                _context.Complaints.Add(request.Complaint);
 
-                
+                var user = await _context.Users.FirstOrDefaultAsync(
+                    x => x.ComplainantName == _userAccessor.GetComplainantName()
+                );
+
+
+                 _context.Complaints.Add(request.Complaint);
+  
 
                 var result = await _context.SaveChangesAsync() > 0;
 
                 if (!result)
-                    return Result<Unit>.Failure("Failed to create activity");
+                    return Result<Unit>.Failure("Failed to create complaint");
 
                 return Result<Unit>.Success(Unit.Value);
             }

@@ -1,3 +1,4 @@
+using API.Services;
 using Application.Complaints;
 using Application.Core;
 using Application.Interfaces;
@@ -55,12 +56,14 @@ namespace API.Extensions
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+            services.AddScoped<IComplaintPhotoAccessor, ComplaintPhotoAccessor>();
+            services.AddScoped<ImageService>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
             services.AddHttpContextAccessor();
             
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<Create>();
-            services.AddIdentityServices(config);
+            //services.AddIdentityServices(config);
             services.AddIdentityCore<AppUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>();
