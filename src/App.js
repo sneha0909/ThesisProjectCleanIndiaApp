@@ -8,6 +8,13 @@ import LoginPage from './Components/Pages/LoginPage';
 import ManageComplaints from './Components/Pages/Complaints/ManageComplaints';
 import ComplaintStatus from './Components/Pages/Complaints/ComplaintStatus';
 import CreateComplaint from './Components/Pages/Complaints/CreateComplaint';
+import ComplaintAdmin from './Components/Pages/Complaints/Admin/ComplaintAdmin';
+import Details from './Components/Pages/Complaints/Admin/Table/Details';
+import Admin2 from './Components/Pages/Complaints/Admin/Admin2Temporary/Admin2';
+import EmpListing from './Components/Pages/Complaints/Admin/Admin2Temporary/EmpListing';
+import ComplaintDetail from './Components/Pages/Complaints/Admin/Admin2Temporary/ComplaintDetail';
+import EmpEdit from './Components/Pages/Complaints/Admin/Admin2Temporary/EmpEdit';
+
 
 function App() {
 
@@ -27,6 +34,13 @@ function App() {
           <Route path="/createComplaint" element={< CreateComplaint />} />
           <Route path="/managecomplaints" element={< ManageComplaints />} />
           <Route path="/complaintStatus" element={< ComplaintStatus />} />
+          <Route path="/admin" element={< ComplaintAdmin />} />
+          <Route path="/details/:empid" element={< Details />} />
+          {/* <Route path="/admin2" element={< Admin2 />} /> */}
+          <Route path='/admin2' element={<EmpListing />}></Route>
+
+          <Route path='/admin/detail/:empid' element={<ComplaintDetail />}></Route>
+          <Route path='/admin/edit/:empid' element={<EmpEdit />}></Route>
           
           
         </Routes>

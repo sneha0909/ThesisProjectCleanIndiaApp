@@ -81,7 +81,7 @@ function LoginForm() {
                 }
 
                 else {
-                    console.log('Something went wrong')
+                    // console.log('Something went wrong')
                     setBooleanValues({open: true, Message: data.data.title})
                 }
             }).catch((error) => {

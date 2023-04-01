@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../Register/RegisterForm.css'
+import '../Register/RegisterForm.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AuthServices from '../../Services/AuthServices';
