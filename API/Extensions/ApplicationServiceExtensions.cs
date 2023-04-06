@@ -63,7 +63,7 @@ namespace API.Extensions
             
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<Create>();
-            //services.AddIdentityServices(config);
+            services.AddIdentityServices(config);
             services.AddIdentityCore<AppUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>();

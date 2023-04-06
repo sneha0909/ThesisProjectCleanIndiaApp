@@ -37,23 +37,29 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new Details.Query { Id = id }));
         }
 
-        [HttpPost]
+        [HttpGet("{complaintType}/{complainantName}/{mobileNum}")] //api/complaints/ysgdtvj
+        public async Task<IActionResult> GetComplaintSearchDetails(string complainantName, string mobileNum, string complaintType)
+        {
+             return HandleResult(await Mediator.Send(new ComplaintsDetails.Query { ComplainantName = complainantName, MobileNum = mobileNum , ComplaintType = complaintType}));
+            
+        }
+
         
+        [HttpPost]
         public async Task<IActionResult> CreateComplaint(
             [FromForm] CreateComplaintDto createComplaintDto,
             [FromForm] Complaint complaint
         )
         {
-             if (createComplaintDto.PictureUrl != null) 
+            if (createComplaintDto.PictureUrl != null)
             {
                 var imageResult = await _imageService.AddImageAsync(createComplaintDto.PictureUrl);
 
-                if (imageResult.Error != null) 
-                   return BadRequest(new ProblemDetails{Title = imageResult.Error.Message});
+                if (imageResult.Error != null)
+                    return BadRequest(new ProblemDetails { Title = imageResult.Error.Message });
 
                 complaint.PhotoUrl = imageResult.SecureUrl.ToString();
                 complaint.PublicId = imageResult.PublicId;
-
             }
 
             _context.Complaints.Add(complaint);

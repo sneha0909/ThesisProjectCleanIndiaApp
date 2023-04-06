@@ -27,6 +27,8 @@ namespace Application.Complaints
 
                 return Result<Complaint>.Success(complaint);
             }
+
+               
         }
     }
 }
