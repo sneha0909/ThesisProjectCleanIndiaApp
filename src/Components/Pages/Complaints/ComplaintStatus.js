@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Datepickertofrom from "./Datepickertofrom";
-import axios from 'axios';
+import React, { useState } from "react";
 import '../Complaints/ComplaintStatus.css';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 
 function ComplaintStatus() {
@@ -12,90 +11,53 @@ function ComplaintStatus() {
     const [ComplaintNo, setComplaintNo] = useState("");
     const [ComplainantName, setComplainantName] = useState("");
     const [Mobile, setMobile] = useState("");
-    const [results, setResults] = useState([]);
-    const [error, setError] = useState(false);
-    const [detailsError, setdetailsError] = useState(false);
-
-
-    const keys = ["complainantName", "complaintLocationCity", "complaintType", "complainantAddressWard", "phoneNumber"]
+    const [search, setSearch] = useState("searchbyComplaintNo");
+    const navigate = useNavigate();
 
 
 
-    //  const fetchData = (value) => {
-    //     fetch("https://localhost:5001/api/Complaints")
-    //         .then((response) => response.json())
-    //         .then(json => {
-    //             //console.log(json);
-    //             const results = json.filter((data) => {
-    //                 return (keys.some(key=>data[key].toLowerCase().includes(value)))
-
-    //             });
-    //             console.log(results);
-    //         });
-
-    // }
-
-
-    const fetchData = (value) => {
-        fetch("https://localhost:5001/api/Complaints")
-            .then((response) => response.json())
-            .then(json => {
-                //console.log(json);
-                const results = json.filter((data) => {
-                    return (
-                        value &&
-                        data &&
-                        data.id &&
-                        data.id)
-                        .toUpperCase().includes(value)
-
-                });
-                console.log(results);
-                setResults(results)
-            });
-
-    }
-
-    const handleChange = (value) => {
-        setComplaintNo(value)
-        fetchData(value)
-    }
-
-
-
-    const findSelected = (opt) => {
-
-        if (opt == "Search by Complaint No") {
-            document.getElementById("inputtext").disabled = false;
-            document.getElementById("inputCity").disabled = true;
-            document.getElementById("inputComplaintType").disabled = true;
-            document.getElementById("inputWard").disabled = true;
-            document.getElementById("inputName").disabled = true;
-            // document.getElementById("inputToDate").disabled = true;
-            // document.getElementById("inputFromDate").disabled = true;   
-            document.getElementById("inputMobile").disabled = true;
-        }
-        else {
-            document.getElementById("inputtext").disabled = true;
-            document.getElementById("inputCity").disabled = false;
-            document.getElementById("inputComplaintType").disabled = false;
-            document.getElementById("inputWard").disabled = false;
-            document.getElementById("inputName").disabled = false;
-            // document.getElementById("inputToDate").disabled = false;
-            // document.getElementById("inputFromDate").disabled = false;    
-            document.getElementById("inputMobile").disabled = false;
-        }
+    const handleSearch=(e)=>{
+       const getsearch = e.target.value;
+       setSearch(getsearch);   
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(City.length == 0)
+        if(search === "searchbyComplaintNo")
         {
-            setError(true);
+            if(ComplaintNo.length === 0)
+            {
+                alert('Please enter a Complaint Number!!!');
+                
+            }
+            else
+            {
+                navigate("/admin/detail/" + ComplaintNo);
 
+            }
+          
         }
+        if(search === "SearchbyComplaintDetails")
+        {
+            if( ComplaintType.length === 0 || ComplainantName.length === 0 || Mobile.length === 0)
+            {
+                alert('Please fill all the mandatory fields to search complaint by details!!!');
+                
+            }   
+
+            else
+            {
+                
+                // navigate("/trackingResults/" + ComplainantName + Mobile);
+                navigate("/trackingResults/" + ComplaintType + "/" + ComplainantName + "/" + Mobile);
+
+            }
             
+        }
+        
     }
+
+    
 
     return (
         <>
@@ -107,15 +69,17 @@ function ComplaintStatus() {
 
                         <h1>Complaint Status</h1>
                         <span id="SubHeading"> To search, Please select either 'Search by Complaint No.' OR 'Search by Details'</span>
+                        <span id="SubHeading2"> Fields Marked with * are Mandatory Fields.'</span>
                         <br></br>
 
-                        <input type="radio" value="SearchbyComplaintNo" name="Search" onChange={(e) => findSelected("Search by Complaint No", e)} /> Search by Complaint No
-                        <input type="text" id="inputtext" name="ComplaintNo" value={ComplaintNo} onChange={(e) => handleChange(e.target.value)} disabled="disabled" ></input>
-                        {
-                            error && ComplaintNo.length <= 0 ? <label id='FieldEmptyError'>* Field required!</label> : ""
-                        }
+                        
+                        <input type="radio" name="Search" value="searchbyComplaintNo" checked={search === 'searchbyComplaintNo'}  id="ComplaintNum" onClick={handleSearch} readOnly /> Search by Complaint No
+
+                        <input type="text" id="inputtext" name="ComplaintNo" value={ComplaintNo}  onChange={(e) => setComplaintNo(e.target.value)}  disabled={search === "SearchbyComplaintDetails"} ></input>
+                    
                         <br></br>
-                        <input type="radio" value="SearchbyComplaintDetails" name="Search" onChange={(e) => findSelected("Search by Details", e)} /> Search by Details
+
+                        <input type="radio" name="Search" value="SearchbyComplaintDetails" id="ComplaintSearch" onClick={handleSearch}  /> Search by Details
                         
 
 
@@ -125,7 +89,7 @@ function ComplaintStatus() {
 
                         <span id='Required1'>*</span>
                         <label htmlFor='' id='LabelId'>Select Your City / अपना शहर चुनें</label>
-                        <select id="inputCity" value={City} onChange={(e) => setCity(e.target.value)} disabled="disabled" className="ComplaintSearchInput">
+                        <select id="inputCity" value={City} onChange={(e) => setCity(e.target.value)} disabled={search === "searchbyComplaintNo"} className="ComplaintSearchInput">
                             <option value="" disabled></option>
 
                             <option value="AALOT NAGAR PARISHAD">AALOT NAGAR PARISHAD / आलोट नगर परिषद</option>
@@ -138,13 +102,11 @@ function ComplaintStatus() {
                             <option value="DINDORI NAGAR PARISHAD">DINDORI NAGAR PARISHAD / डिंडोरी नगर परिषद्</option>
 
                         </select>
-                        {
-                            error && City.length <= 0 ? <label id='FieldEmptyError'>* Field required!</label> : ""
-                        }
+                        
                         <br></br>
                         <span id='Required1'>*</span>
                         <label htmlFor='' id='LabelId'>Select Your Complaint Type:</label>
-                        <select id="inputComplaintType" value={ComplaintType} onChange={(e) => setCompliantType(e.target.value)} disabled="disabled" className="ComplaintSearchInput">
+                        <select id="inputComplaintType" value={ComplaintType} onChange={(e) => setCompliantType(e.target.value)} disabled={search === "searchbyComplaintNo"} className="ComplaintSearchInput">
                             <option value="" disabled></option>
 
                             <option value="SEWAGE">SEWAGE</option>
@@ -153,13 +115,11 @@ function ComplaintStatus() {
 
 
                         </select>
-                        {
-                            error && ComplaintType.length <= 0 ? <label id='FieldEmptyError'>* Field required!</label> : ""
-                        }
+                        
                         <br></br>
                         <span id='Required1'>*</span>
                         <label htmlFor='' id='LabelId'>Select ward:</label>
-                        <select id="inputWard" value={Ward} onChange={(e) => setWard(e.target.value)} disabled="disabled" className="ComplaintSearchInput">
+                        <select id="inputWard" value={Ward} onChange={(e) => setWard(e.target.value)} disabled={search === "searchbyComplaintNo"} className="ComplaintSearchInput">
                             <option value="" disabled></option>
 
                             <option value="Ward1">WARD 1</option>
@@ -170,17 +130,13 @@ function ComplaintStatus() {
                             <option value="Ward6">WARD 6</option>
 
                         </select>
-                        {
-                            error && Ward.length <= 0 ? <label id='FieldEmptyError'>* Field required!</label> : ""
-                        }
+                    
                         <br></br>
 
                         <span id='Required1'>*</span>
-                        <label for="fName" id='LabelId'>Name of Complainant</label>
-                        <input type="text" id="inputName" value={ComplainantName} onChange={(e) => setComplainantName(e.target.value)} disabled="disabled" className="ComplaintSearchInput"></input>
-                        {
-                            error && ComplainantName.length <= 0 ? <label id='ComplaintFieldEmptyError'>* Field required!</label> : ""
-                        }
+                        <label htmlFor="fName" id='LabelId'>Name of Complainant</label>
+                        <input type="text" id="inputName" value={ComplainantName} onChange={(e) => setComplainantName(e.target.value)} disabled={search === "searchbyComplaintNo"} className="ComplaintSearchInput"></input>
+                        
                         <br></br>
                         {/* <label for="fName">Date of Complaint</label>
                 <br></br>
@@ -192,11 +148,9 @@ function ComplaintStatus() {
                 <input type="text" id="inputFromDate" disabled="disabled"></input>
                 <br></br> */}
                         <span id='Required1'>*</span>
-                        <label for="mobileComplainant" id='LabelId'>Complainant Mobile Number</label>
-                        <input type="text" id="inputMobile" value={Mobile} onChange={(e) => setMobile(e.target.value)} disabled="disabled" className="ComplaintSearchInput" ></input>
-                        {
-                            error && Mobile.length <= 0 ? <label id='ComplaintFieldEmptyError'>* Field required!</label> : ""
-                        }
+                        <label htmlFor="mobileComplainant" id='LabelId'>Complainant Mobile Number</label>
+                        <input type="text" id="inputMobile" value={Mobile} onChange={(e) => setMobile(e.target.value)} disabled={search === "searchbyComplaintNo"} className="ComplaintSearchInput" ></input>
+                        
                         <br></br>
 
                         <button id="SubmitButton" onClick={handleSubmit}>Get Status</button>

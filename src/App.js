@@ -14,6 +14,7 @@ import Admin2 from './Components/Pages/Complaints/Admin/Admin2Temporary/Admin2';
 import EmpListing from './Components/Pages/Complaints/Admin/Admin2Temporary/EmpListing';
 import ComplaintDetail from './Components/Pages/Complaints/Admin/Admin2Temporary/ComplaintDetail';
 import EmpEdit from './Components/Pages/Complaints/Admin/Admin2Temporary/EmpEdit';
+import TrackingResults from './Components/Pages/Complaints/TrackingResults';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
 
           <Route path='/admin/detail/:empid' element={<ComplaintDetail />}></Route>
           <Route path='/admin/edit/:empid' element={<EmpEdit />}></Route>
+          <Route path='/trackingResults/:complaintType/:complainantName/:mobile' element={<TrackingResults />}  exact></Route>
           
           
         </Routes>
