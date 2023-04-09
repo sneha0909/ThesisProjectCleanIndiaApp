@@ -74,7 +74,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditComplaint(Guid id, Complaint complaint)
+        public async Task<IActionResult> EditComplaint(Guid id, [FromForm]Complaint complaint)
         {
             complaint.Id = id;
             return HandleResult(await Mediator.Send(new Edit.Command { Complaint = complaint }));

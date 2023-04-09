@@ -66,6 +66,8 @@ namespace Domain
 
         public string PublicId { get; set; }
 
+        public string ComplaintStatus { get; set; }
+
         
     }
 }
