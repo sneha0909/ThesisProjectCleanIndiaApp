@@ -31,7 +31,9 @@ const EmpDetail = () => {
                     {/* {empdata && */}
                     <div className='ComplaintInfoPart1'>
                     <h3>General Information</h3>
-                        
+
+                        <label htmlFor='' id='LabelId'>Complaint Status: {empdata.complaintStatus}</label>
+                        <br></br> 
                         <label htmlFor='' id='LabelId'>Complaint Type: {empdata.complaintType}</label>
                         <br></br>
                         <label htmlFor='' id='LabelId'>Complaint Subtype: {empdata.complaintSubtype}</label>

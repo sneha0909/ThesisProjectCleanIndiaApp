@@ -44,6 +44,9 @@ export default function BasicTable() {
     const LoadDetail = (id) => {
       navigate("/admin/detail/" + id);
   }
+  const LoadEdit = (id) => {
+    navigate("/admin/edit/" + id);
+}
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/complaints')
@@ -73,6 +76,7 @@ export default function BasicTable() {
             <TableCell align="left">Complaint Type</TableCell>
             <TableCell align="left">Complaint Status</TableCell>
             <TableCell align="left">Action</TableCell>
+            <TableCell align="left">Edit Complaint</TableCell>
             
           </TableRow>
         </TableHead>
@@ -89,10 +93,13 @@ export default function BasicTable() {
             <TableCell align="left">{complaint.email}</TableCell>
             <TableCell align="left">{complaint.complaintType}</TableCell>
             <TableCell align="left">
-                <span className="status" style={makeStyle()}>In Process</span>
+                <span className="status" style={makeStyle()}>{complaint.complaintStatus}</span>
             </TableCell>
             <TableCell align="left">
                 <button className="btn" onClick={() => { LoadDetail(complaint.id) }}>Details</button>
+            </TableCell>
+            <TableCell align="left">
+                <button className="btn" onClick={() => { LoadEdit(complaint.id) }}>Details</button>
             </TableCell>
             
           </TableRow>

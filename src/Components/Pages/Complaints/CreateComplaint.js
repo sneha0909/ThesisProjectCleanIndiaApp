@@ -42,6 +42,8 @@ function CreateComplaint() {
   const navigate = useNavigate();
   const [showhide, setShowhide] = useState('');
   const [error, setError] = useState(false);
+  const [complaintStatus, setcomplaintStatus] = useState("Complaint Filed");
+
 
   // Contains the value and text for the options
   const languages = [
@@ -117,6 +119,7 @@ function CreateComplaint() {
     formData.append('phoneNumber', phoneNumber);
     formData.append('email', email);
     formData.append('pictureUrl', image);
+    formData.append('complaintStatus', complaintStatus);
     // formData.append('fileName', image.name);
     // const config = {
     //   headers: {

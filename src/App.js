@@ -13,8 +13,8 @@ import Details from './Components/Pages/Complaints/Admin/Table/Details';
 import Admin2 from './Components/Pages/Complaints/Admin/Admin2Temporary/Admin2';
 import EmpListing from './Components/Pages/Complaints/Admin/Admin2Temporary/EmpListing';
 import ComplaintDetail from './Components/Pages/Complaints/Admin/Admin2Temporary/ComplaintDetail';
-import EmpEdit from './Components/Pages/Complaints/Admin/Admin2Temporary/EmpEdit';
 import TrackingResults from './Components/Pages/Complaints/TrackingResults';
+import ComplaintEdit from './Components/Pages/Complaints/Admin/Admin2Temporary/ComplaintEdit'
 
 
 function App() {
@@ -37,11 +37,10 @@ function App() {
           <Route path="/complaintStatus" element={< ComplaintStatus />} />
           <Route path="/admin" element={< ComplaintAdmin />} />
           <Route path="/details/:empid" element={< Details />} />
-          {/* <Route path="/admin2" element={< Admin2 />} /> */}
           <Route path='/admin2' element={<EmpListing />}></Route>
 
           <Route path='/admin/detail/:empid' element={<ComplaintDetail />}></Route>
-          <Route path='/admin/edit/:empid' element={<EmpEdit />}></Route>
+          <Route path='/admin/edit/:empid' element={<ComplaintEdit />}></Route>
           <Route path='/trackingResults/:complaintType/:complainantName/:mobile' element={<TrackingResults />}  exact></Route>
           
           
