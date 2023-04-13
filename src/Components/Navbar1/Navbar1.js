@@ -6,7 +6,6 @@ import logoFb from '../../images/ico-fb.png';
 import logoTw from '../../images/ico-tw.png';
 import logoYt from '../../images/ico-yt.png';
 import logoIn from '../../images/ico-insta.png';
-import logoGlobe from '../../images/globe3.jpg';
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
 import useDarkMode from '../../Hooks/useDarkMode';
@@ -36,7 +35,6 @@ function Navbar1() {
 
       window.open(url, '_blank')
     }
-    //window.confirm('You are being redirected to an external website. Please note that MyGov Website cannot be held responsible for external websites content & privacy policies.');
 
   }
 
@@ -121,6 +119,16 @@ function Navbar1() {
                 onChange={handleLanguageChange}>
                 <option value="en">English</option>
                 <option value="hi">Hindi</option>
+                <option value="bn">Bengali</option>
+                <option value="gu">Gujarati</option>
+                <option value="kn">Kannada</option>
+                <option value="ml">Malayalam</option>
+                <option value="mr">Marathi</option>
+                <option value="ne">Nepali</option>
+                <option value="or">Oriya</option>
+                <option value="pa">Punjabi</option>
+                <option value="ta">Tamil</option>
+                <option value="te">Telugu</option>
               </select>
             </li>
             <li className="nav2-item">

@@ -72,11 +72,11 @@ export default function BasicTable() {
           <TableRow>
             <TableCell>Complainant Name</TableCell>
             <TableCell align="left">Complaint Id</TableCell>
-            <TableCell align="left">Email</TableCell>
+            <TableCell align="left">Complaint City</TableCell>
             <TableCell align="left">Complaint Type</TableCell>
             <TableCell align="left">Complaint Status</TableCell>
-            <TableCell align="left">Action</TableCell>
             <TableCell align="left">Edit Complaint</TableCell>
+            <TableCell align="left">Details</TableCell>
             
           </TableRow>
         </TableHead>
@@ -90,16 +90,16 @@ export default function BasicTable() {
             {complaint.complainantName}
             </TableCell>
             <TableCell align="left">{complaint.id}</TableCell>
-            <TableCell align="left">{complaint.email}</TableCell>
+            <TableCell align="left">{complaint.complaintLocationCity}</TableCell>
             <TableCell align="left">{complaint.complaintType}</TableCell>
+            <TableCell align="left">{complaint.complaintStatus}</TableCell>
             <TableCell align="left">
-                <span className="status" style={makeStyle()}>{complaint.complaintStatus}</span>
+                
+                <button className="btn" onClick={() => { LoadEdit(complaint.id) }}>Edit Complaint</button>
             </TableCell>
             <TableCell align="left">
                 <button className="btn" onClick={() => { LoadDetail(complaint.id) }}>Details</button>
-            </TableCell>
-            <TableCell align="left">
-                <button className="btn" onClick={() => { LoadEdit(complaint.id) }}>Details</button>
+                
             </TableCell>
             
           </TableRow>
