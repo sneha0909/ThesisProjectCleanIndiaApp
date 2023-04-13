@@ -15,21 +15,13 @@ namespace Persistence
                     {
                         ComplainantName = "Harry Potter",
                         UserName = "harry",
-                        // State = "Madhya Pradesh",
-                        // District = "Betul",
-                        // MunicipalCorporation = "Municipal Corporation Betul",
                         Email = "harry@test.com"
-                        // PhoneNumber = "9137532999",
                     },
                     new AppUser
                     {
                         ComplainantName = "Hermione Granger",
                         UserName = "hermione",
-                        // State = "Maharashtra",
-                        // District = "Aurangabad",
-                        // MunicipalCorporation = "Municipal Corporation Aurangabad",
                         Email = "granger@test.com"
-                        // PhoneNumber = "9137532888",
                     }
                 };
 
@@ -65,7 +57,7 @@ namespace Persistence
                     ComplaintLocationZoneWardNo = "D2",
                     ComplaintLocationArea1 = "Gauthana",
                     ComplaintLocationArea2 = "Gauthana",
-                    ComplaintLocationCity = "Betul",
+                    ComplaintLocationCity = "AALOT NAGAR PARISHAD  / आलोट नगर परिषद",
                     ComplaintLocationPincode = "460001",
                     ComplainantName = "Aman Jindal",
                     ComplainantAddressWard = "WARD 1",
@@ -76,7 +68,7 @@ namespace Persistence
                     ComplainantAddressArea1 = "Gauthana",
                     ComplainantAddressArea2 = "Gauthana",
                     ComplainantAddressLandmark = "Durga Devi Temple",
-                    ComplainantAddressCity = "Betul",
+                    ComplainantAddressCity = "AALOT NAGAR PARISHAD  / आलोट नगर परिषद",
                     ComplainantAddressState = "Madhya Pradesh",
                     ComplainantAddressCountry = "India",
                     ComplainantAddressSTDCodeOfficeTelephone = "+912",
@@ -85,7 +77,8 @@ namespace Persistence
                     ComplainantAddressResidenceTelephone = "1234098",
                     PhoneNumber = "73649824",
                     Email = "amanjindal@gmail.com",
-                    PhotoUrl = "/images/products/sb-ang1.png"
+                    PhotoUrl = "https://res.cloudinary.com/sneha09/image/upload/v1680990369/zzewtkpvpvamei3hebo0.png",
+                    ComplaintStatus = "In Review"
                     
                     
                 },
@@ -100,7 +93,7 @@ namespace Persistence
                     ComplaintLocationZoneWardNo = "D10",
                     ComplaintLocationArea1 = "Tikari",
                     ComplaintLocationArea2 = "Tikari",
-                    ComplaintLocationCity = "Betul",
+                    ComplaintLocationCity = "CHICHOLI NAGAR PARISHAD / चिचोली नगर परिषद्",
                     ComplaintLocationPincode = "460001",
                     ComplainantName = "Aarav Kumar",
                     ComplainantAddressWard = "WARD 5",
@@ -111,7 +104,7 @@ namespace Persistence
                     ComplainantAddressArea1 = "Tikari",
                     ComplainantAddressArea2 = "Tikari",
                     ComplainantAddressLandmark = "ELC Church",
-                    ComplainantAddressCity = "Betul",
+                    ComplainantAddressCity = "CHICHOLI NAGAR PARISHAD / चिचोली नगर परिषद्",
                     ComplainantAddressState = "Madhya Pradesh",
                     ComplainantAddressCountry = "India",
                     ComplainantAddressSTDCodeOfficeTelephone = "+912",
@@ -120,7 +113,8 @@ namespace Persistence
                     ComplainantAddressResidenceTelephone = "45487548",           
                     PhoneNumber = "1234567",
                     Email = "aaravkumar@gmail.com",
-                    PhotoUrl = "/images/products/sb-ang1.png"
+                    PhotoUrl = "https://res.cloudinary.com/sneha09/image/upload/v1679835576/jwy8kmasgjis976voekq.png",
+                    ComplaintStatus = "Complaint Resolved"
                     
                 },
                 new Complaint
@@ -134,7 +128,7 @@ namespace Persistence
                     ComplaintLocationZoneWardNo = "D3",
                     ComplaintLocationArea1 = "Sadar",
                     ComplaintLocationArea2 = "Sadar",
-                    ComplaintLocationCity = "Betul",
+                    ComplaintLocationCity = "DINDORI NAGAR PARISHAD / डिंडोरी नगर परिषद्",
                     ComplaintLocationPincode = "460001",
                     ComplainantName = "Amisha Gangwani", 
                     ComplainantAddressWard = "WARD 2",
@@ -145,7 +139,7 @@ namespace Persistence
                     ComplainantAddressArea1 = "Sadar",
                     ComplainantAddressArea2 = "Sadar",
                     ComplainantAddressLandmark = "Samsung Showroom",
-                    ComplainantAddressCity = "Betul",
+                    ComplainantAddressCity = "DINDORI NAGAR PARISHAD / डिंडोरी नगर परिषद्",
                     ComplainantAddressState = "Madhya Pradesh",
                     ComplainantAddressCountry = "India",
                     ComplainantAddressSTDCodeOfficeTelephone = "+912",
@@ -154,7 +148,8 @@ namespace Persistence
                     ComplainantAddressResidenceTelephone = "987654321",           
                     PhoneNumber = "7654321",
                     Email = "amishagangwani@gmail.com",
-                    PhotoUrl = "/images/products/sb-ang1.png"    
+                    PhotoUrl = "https://res.cloudinary.com/sneha09/image/upload/v1678908472/v6u798z0nuj4c95mrzwx.png",
+                    ComplaintStatus = "Feedback"
                 },
                
             };
