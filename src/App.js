@@ -14,6 +14,7 @@ import ComplaintSearchByDetailsResults from './Components/Pages/Complaints/Compl
 import ComplaintEdit from './Components/Pages/Complaints/Admin/ComplaintEdit'
 import ComplaintSubmissionPage from './Components/Pages/Complaints/Create Complaint/ComplaintSubmissionPage';
 import ComplaintNumberSearchResults from './Components/Pages/Complaints/Complaint Status/ComplaintNumberSearchResults';
+import Heatmap from './Components/Location/Heatmap';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/SearchResultsByDetails/:complaintType/:complainantName/:mobile' element={<ComplaintSearchByDetailsResults />}  exact></Route>
           <Route path='/SearchResultsByComplaintNumber/:empid' element={<ComplaintNumberSearchResults />}></Route>
           <Route path='/complaintSubmit' element={<ComplaintSubmissionPage />}></Route>
+          <Route path='/heatmap' element={<Heatmap />}></Route>
 
           
           

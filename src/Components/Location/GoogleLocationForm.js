@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import SearchIcon from '@mui/icons-material/Search';
+import '../Location/GoogleLocationForm.css';
 
 
 // const apiKey = import.meta.env.CLEAN_INDIA_GMAP_API_KEY;
@@ -124,6 +125,22 @@ function GoogleLocationForm() {
 
   }
 
+  const geocode = ({ latitude: lat, longitude: lng }) => {
+    //console.log(lat, lng);
+    const url = `${geocodeJson}?key=${apiKey}&latlng=${lat},${lng}`;
+    searchInput.current.value = "Getting your location...";
+    fetch(url)
+      .then(response => response.json())
+      .then(location => {
+        const place = location.results[0];
+        //console.log(extractAddress(place));
+        const _address = extractAddress(place);
+        setAddress(_address);
+        searchInput.current.value = _address.plain();
+      })
+
+  }
+
   const findMyLocation = () => {
     //alert("find my location");
 
@@ -142,7 +159,7 @@ function GoogleLocationForm() {
 
   return (
     <>
-      <div className='ComplaintForm'>
+      <div className='GoogleMaps'>
         <div className='search'>
           <span><SearchIcon /></span>
           <input ref={searchInput} type="text" placeholder='Search location...' />
