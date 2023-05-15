@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -10,9 +11,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230428172007_PropertyNameChanged")]
+    partial class PropertyNameChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.11");
@@ -128,9 +130,6 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsHost")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("LanguageCode")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AppUserId", "CleaningEventId");
@@ -296,15 +295,15 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e07a8dd4-ba9d-46e5-a470-8f90efcba947",
-                            ConcurrencyStamp = "9c3bf951-79e9-4c66-9de1-224e48693c0e",
+                            Id = "409428a3-449a-4f92-a2f9-15685b936380",
+                            ConcurrencyStamp = "8f1ba2fe-0562-47f8-af4a-031101024ca9",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "c810d6d1-7ea1-44ae-93db-f7166e8557be",
-                            ConcurrencyStamp = "27e4a4b0-366d-41c4-a6a2-762f93310332",
+                            Id = "73f068ef-13ae-43e6-9513-40894adb3003",
+                            ConcurrencyStamp = "6bdf6484-c370-41bb-840c-53227ca2a048",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

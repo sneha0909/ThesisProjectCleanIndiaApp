@@ -14,8 +14,6 @@ namespace Application.Photos
         {
             public IFormFile File { get; set; }
 
-            
-        
         }
 
         public class Handler : IRequestHandler<Command, Result<Photo>>
@@ -39,7 +37,7 @@ namespace Application.Photos
             public async Task<Result<Photo>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _context.Users.Include(p => p.Photos)
-                      .FirstOrDefaultAsync(x => x.ComplainantName.ToLower() == _userAccessor.GetComplainantName());
+                      .FirstOrDefaultAsync(x => x.UserName.ToLower() == _userAccessor.GetUsername());
 
                 if (user == null) return null;
 

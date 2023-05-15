@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -10,9 +11,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230427171048_CleaningEventEntityAdded")]
+    partial class CleaningEventEntityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.11");
@@ -25,14 +27,11 @@ namespace Persistence.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Bio")
+                    b.Property<string>("ComplainantName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DisplayName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -111,33 +110,9 @@ namespace Persistence.Migrations
                     b.Property<string>("Venue")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("isCancelled")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.ToTable("CleaningEvents");
-                });
-
-            modelBuilder.Entity("Domain.CleaningEventAttendee", b =>
-                {
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CleaningEventId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsHost")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("LanguageCode")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("AppUserId", "CleaningEventId");
-
-                    b.HasIndex("CleaningEventId");
-
-                    b.ToTable("CleaningEventAttendees");
                 });
 
             modelBuilder.Entity("Domain.Complaint", b =>
@@ -296,15 +271,15 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e07a8dd4-ba9d-46e5-a470-8f90efcba947",
-                            ConcurrencyStamp = "9c3bf951-79e9-4c66-9de1-224e48693c0e",
+                            Id = "39c37e96-3ff7-4f9d-82c7-c4eb99a93242",
+                            ConcurrencyStamp = "d261609a-351d-4e37-9acc-41fc01c0c353",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "c810d6d1-7ea1-44ae-93db-f7166e8557be",
-                            ConcurrencyStamp = "27e4a4b0-366d-41c4-a6a2-762f93310332",
+                            Id = "4ffd5058-dd6f-4253-ad98-cd39c96053e0",
+                            ConcurrencyStamp = "34a2daf8-d95e-4be1-bd60-a0ddc9aec6ce",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -412,25 +387,6 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.CleaningEventAttendee", b =>
-                {
-                    b.HasOne("Domain.AppUser", "AppUser")
-                        .WithMany("CleaningEvents")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.CleaningEvent", "CleaningEvent")
-                        .WithMany("Attendees")
-                        .HasForeignKey("CleaningEventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("CleaningEvent");
-                });
-
             modelBuilder.Entity("Domain.Photo", b =>
                 {
                     b.HasOne("Domain.AppUser", null)
@@ -491,14 +447,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
-                    b.Navigation("CleaningEvents");
-
                     b.Navigation("Photos");
-                });
-
-            modelBuilder.Entity("Domain.CleaningEvent", b =>
-                {
-                    b.Navigation("Attendees");
                 });
 #pragma warning restore 612, 618
         }

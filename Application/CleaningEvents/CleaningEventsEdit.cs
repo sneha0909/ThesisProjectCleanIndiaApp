@@ -3,22 +3,23 @@ using AutoMapper;
 using Domain;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Persistence;
 
-namespace Application.Complaints
+namespace Application.CleaningEvents
 {
-    public class Edit
+    public class CleaningEventsEdit
     {
         public class Command : IRequest<Result<Unit>>
         {
-            public Complaint Complaint { get; set; }
+            public CleaningEvent CleaningEvent { get; set; }
         }
 
-           public class CommandValidator : AbstractValidator<Command>
+        public class CommandValidator : AbstractValidator<Command>
         {
             public CommandValidator()
             {
-                RuleFor(x => x.Complaint).SetValidator(new ComplaintValidator());
+                RuleFor(x => x.CleaningEvent).SetValidator(new CleaningEventValidator());
             }
         }
 
@@ -35,15 +36,17 @@ namespace Application.Complaints
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var complaint = await _context.Complaints.FindAsync(request.Complaint.Id);
+                var cleaningEvent = await _context.CleaningEvents.FindAsync(
+                    request.CleaningEvent.Id
+                );
 
-                if(complaint == null) return null;
+                if(cleaningEvent == null) return null;
 
-                _mapper.Map(request.Complaint, complaint);
+                _mapper.Map(request.CleaningEvent, cleaningEvent);
 
                 var result = await _context.SaveChangesAsync() > 0;
 
-                if (!result) return Result<Unit>.Failure("Failed to update activity");
+                if (!result) return Result<Unit>.Failure("Failed to update the cleaning event");
 
                 return Result<Unit>.Success(Unit.Value);
             }

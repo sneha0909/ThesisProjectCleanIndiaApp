@@ -11,7 +11,7 @@ namespace Application.Profiles
     {
         public class Query : IRequest<Result<Profile>>
         {
-            public string ComplainantName { get; set; }
+            public string Username { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, Result<Profile>>
@@ -29,7 +29,7 @@ namespace Application.Profiles
             {
                 var user = await _context.Users
                     .ProjectTo<Profile>(_mapper.ConfigurationProvider)
-                    .SingleOrDefaultAsync(x => x.ComplainantName == request.ComplainantName);
+                    .SingleOrDefaultAsync(x => x.Username == request.Username);
 
                 return Result<Profile>.Success(user);
             }

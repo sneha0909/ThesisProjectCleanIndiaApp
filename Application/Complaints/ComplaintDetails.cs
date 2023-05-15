@@ -5,7 +5,7 @@ using Persistence;
 
 namespace Application.Complaints
 {
-    public class Details
+    public class ComplaintDetails
     {
         public class Query : IRequest<Result<Complaint>>
         {
@@ -15,10 +15,12 @@ namespace Application.Complaints
         public class Handler : IRequestHandler<Query, Result<Complaint>>
         {
             private readonly DataContext _context;
+            
 
             public Handler(DataContext context)
             {
                 _context = context;
+            
             }
 
             public async Task<Result<Complaint>> Handle(Query request, CancellationToken cancellationToken)

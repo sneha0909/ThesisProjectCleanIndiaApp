@@ -13,7 +13,7 @@ namespace Infrastructure.Security
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public string GetComplainantName() 
+        public string GetUsername() 
         {
             return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
             

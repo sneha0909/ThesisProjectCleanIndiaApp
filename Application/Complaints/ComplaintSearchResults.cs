@@ -6,7 +6,7 @@ using Persistence;
 
 namespace Application.Complaints
 {
-    public class ComplaintsDetails
+    public class ComplaintSearchResults
     {
         public class Query : IRequest<Result<Complaint>>
         {

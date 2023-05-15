@@ -4,7 +4,7 @@ using Persistence;
 
 namespace Application.Complaints
 {
-    public class Delete
+    public class ComplaintDelete
     {
         public class Command : IRequest<Result<Unit>>
         {

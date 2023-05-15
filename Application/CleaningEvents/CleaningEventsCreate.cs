@@ -3,28 +3,23 @@ using Application.Interfaces;
 using Domain;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Complaints
+namespace Application.CleaningEvents
 {
-    public class Create
+    public class CleaningEventsCreate
     {
         public class Command : IRequest<Result<Unit>>
         {
-            public Complaint Complaint { get; set; }
-            // public IFormFile File { get; set; }
-
-            // public CreateComplaintDto createComplaintDto { get; set; }
+            public CleaningEvent CleaningEvent { get; set; }
         }
 
         public class CommandValidator : AbstractValidator<Command>
         {
             public CommandValidator()
             {
-                RuleFor(x => x.Complaint).SetValidator(new ComplaintValidator());
+                RuleFor(x => x.CleaningEvent).SetValidator(new CleaningEventValidator());
             }
         }
 
@@ -33,15 +28,8 @@ namespace Application.Complaints
             private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
 
-            private readonly IComplaintPhotoAccessor _complaintPhotoAccessor;
-
-            public Handler(
-                DataContext context,
-                IUserAccessor userAccessor,
-                IComplaintPhotoAccessor complaintPhotoAccessor
-            )
+            public Handler(DataContext context, IUserAccessor userAccessor)
             {
-                _complaintPhotoAccessor = complaintPhotoAccessor;
                 _userAccessor = userAccessor;
                 _context = context;
             }
@@ -51,19 +39,23 @@ namespace Application.Complaints
                 CancellationToken cancellationToken
             )
             {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
 
-                var user = await _context.Users.FirstOrDefaultAsync(
-                    x => x.ComplainantName == _userAccessor.GetComplainantName()
-                );
+                var attendee = new CleaningEventAttendee
+                {
+                    AppUser = user,
+                    CleaningEvent = request.CleaningEvent,
+                    IsHost = true
+                };
 
-
-                 _context.Complaints.Add(request.Complaint);
-  
+                request.CleaningEvent.Attendees.Add(attendee);
+                
+                _context.CleaningEvents.Add(request.CleaningEvent);
 
                 var result = await _context.SaveChangesAsync() > 0;
 
                 if (!result)
-                    return Result<Unit>.Failure("Failed to create complaint");
+                    return Result<Unit>.Failure("Failed to create cleaning event");
 
                 return Result<Unit>.Success(Unit.Value);
             }

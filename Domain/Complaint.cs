@@ -65,7 +65,6 @@ namespace Domain
         public string PhotoUrl { get; set; }
 
         public string PublicId { get; set; }
-
         public string ComplaintStatus { get; set; }
 
         

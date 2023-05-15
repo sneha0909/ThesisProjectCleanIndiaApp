@@ -7,6 +7,7 @@ using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Extensions
 {
@@ -20,10 +21,11 @@ namespace API.Extensions
                 opt.Password.RequireNonAlphanumeric = false;
 
             })
+            
             .AddEntityFrameworkStores<DataContext>()
             .AddSignInManager<SignInManager<AppUser>>();
 
-            services.AddAuthentication();
+            //services.AddAuthentication();
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
 
@@ -39,6 +41,16 @@ namespace API.Extensions
                 };
 
                });
+
+            services.AddAuthorization(opt => 
+            {
+                opt.AddPolicy("IsCleaningEventHost", policy =>
+                {
+                    policy.Requirements.Add(new IsHostRequirement());
+                });
+
+            });
+            services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
             services.AddScoped<TokenService>();
             
             return services;
