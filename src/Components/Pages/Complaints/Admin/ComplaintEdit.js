@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 
 const ComplaintEdit = () => {
 
+    
     const { empid } = useParams();
 
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ const ComplaintEdit = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/complaints/${empid}`)
+         axios.get(`http://localhost:5000/api/complaints/${empid}`)
             .then(response => {
                 console.log(response);
                 setCompliantType(response.data.complaintType);
@@ -126,6 +127,8 @@ const ComplaintEdit = () => {
             });
 
     }
+
+    
 
     return (
         <div className="Status">

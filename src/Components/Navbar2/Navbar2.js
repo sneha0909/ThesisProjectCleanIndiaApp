@@ -42,13 +42,13 @@ function Navbar2() {
                   </div>
                   <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                      <Link to='/'  className='nav-links' onClick={closeMobileMenu}>
-                        {t("Takeapledge")}
+                      <Link to='/createComplaint'  className='nav-links' onClick={closeMobileMenu}>
+                        REGISER COMPLAINT
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/register'  className='nav-links' onClick={closeMobileMenu}>
-                      {t("Swachhatapakhwada")}
+                      <Link to='/login'  className='nav-links' onClick={closeMobileMenu}>
+                        POST CLEANING EVENTS
                       </Link>
                     </li>
                     <li className='nav-item'>

@@ -3,8 +3,6 @@ import { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from './Components/Pages/HomePage/HomePage';
 import LoggedinPage from './Components/Pages/LoggedIn Page/LoggedinPage';
-import RegisterPage from './Components/Pages/Register Page/RegisterPage';
-import LoginPage from './Components/Pages/Login Page/LoginPage';
 import ComplaintStatus from './Components/Pages/Complaints/Complaint Status/ComplaintStatus';
 import CreateComplaint from './Components/Pages/Complaints/Create Complaint/CreateComplaint';
 import ComplaintAdmin from './Components/Pages/Complaints/Admin/ComplaintAdmin';
@@ -15,6 +13,14 @@ import ComplaintEdit from './Components/Pages/Complaints/Admin/ComplaintEdit'
 import ComplaintSubmissionPage from './Components/Pages/Complaints/Create Complaint/ComplaintSubmissionPage';
 import ComplaintNumberSearchResults from './Components/Pages/Complaints/Complaint Status/ComplaintNumberSearchResults';
 import Heatmap from './Components/Location/Heatmap';
+import CardList from '../src/cleaningEventsApp/features/cleaningEvents/dashboard/CardList';
+import CardView from '../src/cleaningEventsApp/features/cleaningEvents/dashboard/CardView';
+import CardEdit from './cleaningEventsApp/features/cleaningEvents/dashboard/CardEdit';
+import Login from './cleaningEventsApp/features/cleaningEvents/dashboard/Login';
+import Register from './cleaningEventsApp/features/cleaningEvents/dashboard/Register';
+import Profile from './cleaningEventsApp/features/cleaningEvents/dashboard/Profile';
+import CreateEventForm from './cleaningEventsApp/features/cleaningEvents/dashboard/CreateEventForm';
+import ComplaintsHeatmap from './cleaningEventsApp/ComplaintsHeatmap';
 
 
 function App() {
@@ -29,8 +35,6 @@ function App() {
         <Routes>
 
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/loggedin" element={< LoggedinPage />} />
           <Route path="/createComplaint" element={< CreateComplaint />} />
           <Route path="/complaintStatus" element={< ComplaintStatus />} />
@@ -42,6 +46,22 @@ function App() {
           <Route path='/SearchResultsByComplaintNumber/:empid' element={<ComplaintNumberSearchResults />}></Route>
           <Route path='/complaintSubmit' element={<ComplaintSubmissionPage />}></Route>
           <Route path='/heatmap' element={<Heatmap />}></Route>
+         
+          
+          <Route path="/cards" element={<CardList/>}></Route>
+          <Route path="/card/:id" element={<CardView  />} />
+          <Route path="/card/:id/edit" element={<CardEdit/>}></Route>
+          <Route exact path='/create-event' element={<CreateEventForm />}></Route>
+
+          <Route path="/login" element={<Login/>}></Route> 
+          <Route path="/register" element={<Register/>}></Route>
+          <Route path="/profile" element={<Profile/>}></Route>
+          <Route path="/complaintsHeatmap" element={<ComplaintsHeatmap/>}></Route>
+
+
+
+
+
 
           
           
