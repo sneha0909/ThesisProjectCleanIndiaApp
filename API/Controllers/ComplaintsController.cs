@@ -84,7 +84,8 @@ namespace API.Controllers
             // return HandleResult(await Mediator.Send(new Create.Command {Complaint = complaint}));
         }
 
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> EditComplaint(Guid id, [FromForm]Complaint complaint)
         {
