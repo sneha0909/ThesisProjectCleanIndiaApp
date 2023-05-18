@@ -3,7 +3,6 @@ import axios from "axios";
 import { Button, Form, Grid, Header, Message, Segment } from "semantic-ui-react";
 import { Link, useNavigate } from 'react-router-dom';
 import LoginNavbar from '../../../../Components/Pages/Login Page/LoginNavbar';
-import Footer from "../../../../Components/Footer/Footer";
 import RegisterFooter from "../../../../Components/Pages/Register Page/RegisterFooter";
 
 const Login = () => {

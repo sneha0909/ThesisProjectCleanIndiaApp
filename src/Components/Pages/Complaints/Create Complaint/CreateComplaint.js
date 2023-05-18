@@ -6,6 +6,7 @@ import "../Create Complaint/CreateComplaint.css";
 import { useTranslation } from "react-i18next";
 import Navbar2 from "../../../Navbar2/Navbar2";
 import RegisterFooter from "../../Register Page/RegisterFooter";
+import LoginNavbar from "../../Login Page/LoginNavbar";
 
 function CreateComplaint() {
   // It is a hook imported from 'react-i18next'
@@ -178,7 +179,7 @@ function CreateComplaint() {
 
   return (
     <>
-      <Navbar2 />
+      <LoginNavbar />
       <div className="ComplaintFormLayout">
         <form>
           <h1>Application for Complaint / Grievance</h1>

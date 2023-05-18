@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar2 from '../../../../Components/Navbar2/Navbar2';
 import RegisterFooter from '../../../../Components/Pages/Register Page/RegisterFooter';
+import LoginNavbar from '../../../../Components/Pages/Login Page/LoginNavbar';
 
 const CreateEventForm = () => {
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ const CreateEventForm = () => {
 
   return (
     <>
-    <Navbar2 />
+    <LoginNavbar />
     <Form onSubmit={handleSubmit}>
       <Form.Field
         control={Input}

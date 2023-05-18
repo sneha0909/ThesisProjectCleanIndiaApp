@@ -4,9 +4,8 @@ import { Button, Form, Grid, Header, Message, Segment, Image } from "semantic-ui
 import { useNavigate } from 'react-router-dom';
 import PhotoUploadWidget from "./PhotoUploadWidget";
 import PhotoGallery from "./PhotoGallery";
-import Navbar1 from "../../../../Components/Navbar1/Navbar1";
-import Navbar2 from "../../../../Components/Navbar2/Navbar2";
 import RegisterFooter from "../../../../Components/Pages/Register Page/RegisterFooter";
+import LoginNavbar from "../../../../Components/Pages/Login Page/LoginNavbar";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -76,7 +75,7 @@ const Profile = () => {
 
   return (
     <>
-    <Navbar2/>
+    <LoginNavbar/>
     <Grid columns={2} stackable centered style={{ margin: "0 auto", maxWidth: 800 }}>
       <Grid.Column width={4} style={{padding: 0}} >
         <Segment >

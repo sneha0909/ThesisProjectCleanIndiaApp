@@ -5,6 +5,10 @@ import { Card, Button, Image, Icon } from "semantic-ui-react";
 import CardEdit from "./CardEdit";
 import RegisterFooter from "../../../../Components/Pages/Register Page/RegisterFooter";
 import LoginNavbar from "../../../../Components/Pages/Login Page/LoginNavbar";
+import { google } from 'google-maps';
+import GoogleLocationForm from "./EventLocation";
+import './CardView.css';
+
 
 
 const CardView = () => {
@@ -199,12 +203,25 @@ const CardView = () => {
       console.log(error);
     }
   };
+  const [venueforLocation, setVenueForLocation] = useState('');
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
+  const handleSeeDirectionClick = () => {
+    // Set the venue value
+    setVenueForLocation(event.venue);
+
+    // Set the button clicked flag
+    setIsButtonClicked(true);
+  };
+
+  console.log(event.venue);
+  console.log(venueforLocation);
 
   return (
     <>
     <LoginNavbar />
-    <Card style={{ width: "500px", margin: "20px", height: "550px" }}>
+    <div className="Container">
+    <Card style={{ width: "600px", margin: "20px", height: "550px" }}>
       <Card.Content>
         {isEditing ? (
           <CardEdit
@@ -220,7 +237,12 @@ const CardView = () => {
             </Card.Header>
             <Card.Meta>{event.date}</Card.Meta>
             <Card.Description>{event.description}</Card.Description>
-            {event.venue && <Icon name="map marker alternate" color="teal" />}
+            {event.venue &&
+      <Card.Description>
+        <Icon name="map marker alternate" color="teal" />
+        {event.venue}
+      </Card.Description>
+    }
 
             {event.hostUsername === currentUser?.username && (
               <Card.Content extra>
@@ -273,9 +295,17 @@ const CardView = () => {
           )}
 
           
+<Button onClick={handleSeeDirectionClick }>Check distance</Button>
+
+          
         </div>
       </Card.Content>
     </Card>
+    
+    
+    {/* Render the Google Maps component */}
+    {isButtonClicked && <GoogleLocationForm venueforLocation={venueforLocation} />}
+    </div>
     <RegisterFooter />
     </>
   );

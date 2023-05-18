@@ -145,7 +145,12 @@ useEffect(() => {
           </Card.Header>
           <Card.Meta>{event.date}</Card.Meta>
           <Card.Description>{event.description}</Card.Description>
-          {event.venue && <Icon name="map marker alternate" color="teal" />}
+          {event.venue &&
+      <Card.Description>
+        <Icon name="map marker alternate" color="teal" />
+        {event.venue}
+      </Card.Description>
+    }
           
         </Card.Content>
         {event.hostUsername === currentUser?.username && (

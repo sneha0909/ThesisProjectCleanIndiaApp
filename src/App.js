@@ -20,7 +20,8 @@ import Login from './cleaningEventsApp/features/cleaningEvents/dashboard/Login';
 import Register from './cleaningEventsApp/features/cleaningEvents/dashboard/Register';
 import Profile from './cleaningEventsApp/features/cleaningEvents/dashboard/Profile';
 import CreateEventForm from './cleaningEventsApp/features/cleaningEvents/dashboard/CreateEventForm';
-import ComplaintsHeatmap from './cleaningEventsApp/ComplaintsHeatmap';
+import Map from './cleaningEventsApp/Map';
+import EventLocation from './cleaningEventsApp/features/cleaningEvents/dashboard/EventLocation';
 
 
 function App() {
@@ -56,7 +57,9 @@ function App() {
           <Route path="/login" element={<Login/>}></Route> 
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
-          <Route path="/complaintsHeatmap" element={<ComplaintsHeatmap/>}></Route>
+          <Route path="/complaintsHeatmap" element={<Map/>}></Route>
+          <Route path="/eventlocation" element={<EventLocation/>}></Route>
+
 
 
 

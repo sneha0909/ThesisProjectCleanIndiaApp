@@ -3,6 +3,7 @@ import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../Location/ComplaintMap.css";
 
+
 const ComplaintMap = ({ indianStates }) => {
     const mapStyle = {
         fillColor: "white",

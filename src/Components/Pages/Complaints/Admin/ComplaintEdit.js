@@ -76,6 +76,7 @@ const ComplaintEdit = () => {
                 setEmail(response.data.email);
                 setImage(response.data.photoUrl);
                 setcomplaintStatus(response.data.complaintStatus);
+                console.log(response.data.complaintStatus)
             }).catch((err) => {
                 console.log(err.message);
             })
@@ -147,7 +148,6 @@ const ComplaintEdit = () => {
 
                         <option value="" disabled></option>
                         <option value="In Review">In Review</option>
-                        <option value="Action Taken">Action Taken</option>
                         <option value="Complaint Resolved">Complaint Resolved</option>
                         <option value="Feedback">Feedback</option>
 
