@@ -13,7 +13,7 @@
 }
 
 input[name="CityName"] {
-    background-color: lightgray;
+    /* background-color: lightgray; */
     caret-color: transparent;
 }
 

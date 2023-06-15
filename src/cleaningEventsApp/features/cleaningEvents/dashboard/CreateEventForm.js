@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import { Form, Input, TextArea, Button, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar2 from '../../../../Components/Navbar2/Navbar2';
@@ -45,7 +45,10 @@ const CreateEventForm = () => {
   return (
     <>
     <LoginNavbar />
-    <Form onSubmit={handleSubmit}>
+    <Header as="h2" textAlign="center">
+            Create Event
+          </Header>
+    <Form onSubmit={handleSubmit} >
       <Form.Field
         control={Input}
         label="Title"

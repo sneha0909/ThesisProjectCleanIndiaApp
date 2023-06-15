@@ -30,50 +30,52 @@ const Login = () => {
 
   return (
     <>
-    <LoginNavbar />
-    <Grid textAlign="center" verticalAlign="middle" style={{ height: "100vh"}}>
-      <Grid.Column style={{ maxWidth: 550 }}>
-        <Header as="h2" color="teal" textAlign="center">
-          Login to your account
-        </Header>
-        <Form size="large" onSubmit={handleSubmit}>
-          <Segment stacked>
-            <Form.Input
-              style={{ width: '350px' }}
-              fluid
-              icon="mail"
-              iconPosition="left"
-              placeholder="E-mail address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Form.Input
-              style={{ width: '350px' }}
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+      <LoginNavbar />
+      <Grid
+        textAlign="center"
+        verticalAlign="middle"
+        style={{ height: "75vh" }}
+      >
+        <Grid.Column style={{ maxWidth: 550 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            Login to your account
+          </Header>
+          <Form size="large" onSubmit={handleSubmit}>
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="mail"
+                iconPosition="left"
+                placeholder="E-mail address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-            <Button color="teal" width="350px" size="large" type="submit">
-              Login
-            </Button>
-          </Segment>
-        </Form>
-        {errorMessage && (
-          <Message negative>
-            <Message.Header>{errorMessage}</Message.Header>
+              <Button color="teal" fluid size="large" type="submit">
+                Login
+              </Button>
+            </Segment>
+          </Form>
+          {errorMessage && (
+            <Message negative>
+              <Message.Header>{errorMessage}</Message.Header>
+            </Message>
+          )}
+          <Message>
+            Don't have an account? <Link to="/register">Register</Link>
           </Message>
-        )}
-        <Message>
-          Don't have an account? <Link to="/register">Register</Link>
-        </Message>
-      </Grid.Column>
-    </Grid>
-    <RegisterFooter />
+        </Grid.Column>
+      </Grid>
+      <RegisterFooter />
     </>
   );
 };

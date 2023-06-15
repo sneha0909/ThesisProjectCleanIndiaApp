@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import PreviewImage from "./PreviewImage";
+//import PreviewImage from "./PreviewImage";
 import { useNavigate } from "react-router-dom";
 import "../Create Complaint/CreateComplaint.css";
 import { useTranslation } from "react-i18next";
@@ -642,10 +642,10 @@ function CreateComplaint() {
               </label>
               <input
                 value={city}
+                type="text"
                 onChange={(e) => setCity(e.target.value)}
                 id="ComplaintInput"
                 name="CityName"
-                readOnly
               ></input>
               {error && city.length <= 0 ? (
                 <label id="ComplaintFieldEmptyError">* Field required!</label>
@@ -849,7 +849,7 @@ function CreateComplaint() {
                 id="ComplaintInput"
               />
               <br></br>
-              {image && <PreviewImage file={image} />}
+              {/* {image && <PreviewImage file={image} />} */}
               <button id="ComplaintSubmitButton" onClick={handleSubmit}>
                 Submit
               </button>

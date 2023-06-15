@@ -48,12 +48,12 @@ function Navbar2() {
                     </li>
                     <li className='nav-item'>
                       <Link to='/login'  className='nav-links' onClick={closeMobileMenu}>
-                        POST CLEANING EVENTS
+                        TRACK COMPLAINT STATUS
                       </Link>
                     </li>
                     <li className='nav-item'>
                       <Link to='/login'  className='nav-links' onClick={closeMobileMenu}>
-                      {t("Swachhbharatactivities")}
+                        POST CLEANING EVENTS
                       </Link>
                     </li>
                     <li className='nav-item'>

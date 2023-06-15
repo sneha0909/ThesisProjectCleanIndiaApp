@@ -8,8 +8,7 @@ import LoginNavbar from "../../../../Components/Pages/Login Page/LoginNavbar";
 import { google } from 'google-maps';
 import GoogleLocationForm from "./EventLocation";
 import './CardView.css';
-
-
+import moment from "moment";
 
 const CardView = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -23,50 +22,42 @@ const CardView = () => {
   const [date, setDate] = useState("");
   const [city, setCity] = useState("");
   const [venue, setVenue] = useState("");
-  const [buttonName, setButtonName] = useState( () => {
-    if (event.attendees?.some(
-      (a) => a.username === currentUser?.username))
-      {
-        return "Cancel Attendance"
-      }
-    else{
+  const [buttonName, setButtonName] = useState(() => {
+    if (event.attendees?.some((a) => a.username === currentUser?.username)) {
+      return "Cancel Attendance";
+    } else {
       return "Join Event";
     }
-    
-    });
+  });
 
-    useEffect(() => {
-      if (event.attendees?.some((a) => a.username === currentUser?.username)) {
-        setButtonName("Cancel Attendance");
-      } else {
-        setButtonName("Join Event");
-      }
-    }, [event, currentUser]);
+  useEffect(() => {
+    if (event.attendees?.some((a) => a.username === currentUser?.username)) {
+      setButtonName("Cancel Attendance");
+    } else {
+      setButtonName("Join Event");
+    }
+  }, [event, currentUser]);
 
   const [hostProfilePic, setHostProfilePic] = useState(null);
 
   useEffect(() => {
     if (event.hostUsername) {
-      axios.get(`http://localhost:5000/api/profiles/${event.hostUsername}`, {
-      headers: {
-        Authorization: `Bearer ${token}` // Replace `token` with your actual JWT token
-      }
-    })
-    axios.get(`http://localhost:5000/api/profiles/${event.hostUsername}`, {
-      headers: {
-        Authorization: `Bearer ${token}` // Replace `token` with your actual JWT token
-      }
-    })
-    .then((response) => {
-      const { data } = response;
-      setHostProfilePic(data.image);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-}, [event]);
-    
+      axios
+        .get(`http://localhost:5000/api/profiles/${event.hostUsername}`, {
+          headers: {
+            Authorization: `Bearer ${token}` // Replace `token` with your actual JWT token
+          }
+        })
+        .then((response) => {
+          const { data } = response;
+          setHostProfilePic(data.image);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [event]);
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -127,7 +118,6 @@ const CardView = () => {
       };
       const response = await axios.put(
         `http://localhost:5000/api/CleaningEvents/${id}`,
-
         updatedEvent,
         {
           headers: {
@@ -196,7 +186,7 @@ const CardView = () => {
           },
         }
       );
-      
+
       setButtonName("Join Event");
       console.log(buttonName);
     } catch (error) {
@@ -219,94 +209,102 @@ const CardView = () => {
 
   return (
     <>
-    <LoginNavbar />
-    <div className="Container">
-    <Card style={{ width: "600px", margin: "20px", height: "550px" }}>
-      <Card.Content>
-        {isEditing ? (
-          <CardEdit
-            event={event}
-            onCancel={handleCancel}
-            onSubmit={handleSubmit}
-          />
-        ) : (
-          <>
-            <Card.Header>
-              <Image src={hostProfilePic} avatar size="massive" />
-              {event.title}
-            </Card.Header>
-            <Card.Meta>{event.date}</Card.Meta>
-            <Card.Description>{event.description}</Card.Description>
-            {event.venue &&
-      <Card.Description>
-        <Icon name="map marker alternate" color="teal" />
-        {event.venue}
-      </Card.Description>
-    }
+      <LoginNavbar />
+      <div className="Container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}>
+        <Card style={{ width: "600px", margin: "20px", height: "550px" }}>
+          <Card.Content>
+            {isEditing ? (
+              <CardEdit
+                event={event}
+                onCancel={handleCancel}
+                onSubmit={handleSubmit}
+              />
+            ) : (
+              <>
+                <Card.Header>
+                  <Image src={hostProfilePic} avatar size="massive" />
+                  {event.title}
+                </Card.Header>
+                <Card.Meta>
+                              <Icon name="calendar outline" color="teal" />
+                              {moment(event.date).format("MMMM Do, YYYY")}
+                            </Card.Meta>
+                <Card.Description>{event.description}</Card.Description>
+                {event.venue && (
+                  <Card.Description>
+                    <Icon name="map marker alternate" color="teal" />
+                    {event.venue}
+                  </Card.Description>
+                )}
 
-            {event.hostUsername === currentUser?.username && (
-              <Card.Content extra>
-                <Icon name="star" color="yellow" />
-                You are hosting this activity
-              </Card.Content>
-            )}
-            {event.hostUsername !== currentUser?.username && (
-              <Card.Content extra>
-                <Icon name="user" />
-                Host: {event.hostUsername}
-              </Card.Content>
-            )}
-            {event.attendees?.some(
-              (a) => a.username === currentUser?.username
-            ) && (
-              <Card.Content extra>
-                <Icon name="check" color="green" />
-                You're going to this event
-              </Card.Content>
-            )}
+                {event.hostUsername === currentUser?.username && (
+                  <Card.Content extra>
+                    <Icon name="star" color="yellow" />
+                    You are hosting this activity
+                  </Card.Content>
+                )}
+                {event.hostUsername !== currentUser?.username && (
+                  <Card.Content extra>
+                    <Icon name="user" />
+                    Host: {event.hostUsername}
+                  </Card.Content>
+                )}
+                {event.attendees?.some(
+                  (a) => a.username === currentUser?.username
+                ) && (
+                  <Card.Content extra>
+                    <Icon name="check" color="green" />
+                    You're going to this event
+                  </Card.Content>
+                )}
 
-            {event.attendees && event.attendees.length > 0 && (
-              <Card.Content extra>
-                <Icon name="users" size="big" />
-                Attendees:{" "}
-                {event.attendees.map((a) => a.displayName).join(", ") || "None"}
-              </Card.Content>
+                {event.attendees && event.attendees.length > 0 && (
+                  <Card.Content extra>
+                    <Icon name="users" size="big" />
+                    Attendees:{" "}
+                    {event.attendees
+                      .map((a) => a.displayName)
+                      .join(", ") || "None"}
+                  </Card.Content>
+                )}
+              </>
             )}
-          </>
+            <Image src='https://res.cloudinary.com/sneha09/image/upload/v1686048563/cleaning_rujoig.png' style={{ width: "100%", height: "280px", objectFit: "cover" }}
+      rounded/>
+          </Card.Content>
+          
+          <Card.Content extra>
+            <div className="ui two buttons">
+              {event.hostUsername !== currentUser?.username ? (
+                <Button
+                  onClick={
+                    event.attendees?.some(
+                      (a) => a.username === currentUser?.username
+                    )
+                      ? handleCancelAttendance
+                      : handleJoinEvent
+                  }
+                >
+                  {buttonName}
+                </Button>
+              ) : (
+                <>
+                  <Button onClick={handleCancelEvent}>Cancel event</Button>
+                  <Button onClick={handleEdit}>Manage event</Button>
+                </>
+              )}
+
+              <Button onClick={handleSeeDirectionClick}>Check distance</Button>
+            </div>
+          </Card.Content>
+        </Card>
+
+        {/* Render the Google Maps component */}
+        {isButtonClicked && (
+          <GoogleLocationForm venueforLocation={venueforLocation} />
         )}
-      </Card.Content>
-      <Card.Content extra>
-        <div className="ui two buttons">
-
-          
-        {event.hostUsername !== currentUser?.username ? (
-        <Button onClick={
-          event.attendees?.some((a) => a.username === currentUser?.username)
-            ? handleCancelAttendance
-            : handleJoinEvent
-        }>
-          {buttonName}
-        </Button>
-          ) : (
-            <>
-              <Button onClick={handleCancelEvent}>Cancel event</Button>
-              <Button onClick={handleEdit}>Manage event</Button>
-            </>
-          )}
-
-          
-<Button onClick={handleSeeDirectionClick }>Check distance</Button>
-
-          
-        </div>
-      </Card.Content>
-    </Card>
-    
-    
-    {/* Render the Google Maps component */}
-    {isButtonClicked && <GoogleLocationForm venueforLocation={venueforLocation} />}
-    </div>
-    <RegisterFooter />
+      </div>
+      <RegisterFooter />
     </>
   );
 };

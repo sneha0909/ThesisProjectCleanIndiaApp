@@ -32,64 +32,60 @@ const Register = () => {
 
   return (
     <>
-    <RegisterNavbar />
-    <Grid centered columns={2}>
-      <Grid.Column>
-        <Header as="h2" textAlign="center">
-          Register
-        </Header>
-        <Segment>
-          <Form size="large">
-            <Form.Input
-              style={{ width: '300px' }}
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <Form.Input
-              style={{ width: '300px' }}
-              fluid
-              icon="user circle"
-              iconPosition="left"
-              placeholder="Display Name"
-              value={displayName}
-              onChange={(e) => setDisplayName(e.target.value)}
-            />
-            <Form.Input
-              style={{ width: '300px' }}
-              fluid
-              icon="mail"
-              iconPosition="left"
-              placeholder="Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Form.Input
-              style={{ width: '300px' }}
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+      <RegisterNavbar />
+      <Grid centered columns={2} textAlign="center" verticalAlign="middle" style={{ height: "75vh" }}>
+        <Grid.Column>
+          <Header as="h2" textAlign="center">
+            Register
+          </Header>
+          <Segment>
+            <Form size="large">
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <Form.Input
+                fluid
+                icon="user circle"
+                iconPosition="left"
+                placeholder="Display Name"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+              />
+              <Form.Input
+                fluid
+                icon="mail"
+                iconPosition="left"
+                placeholder="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-            <Button color="teal" fluid size="large" onClick={handleSubmit}>
-              Register
-            </Button>
-          </Form>
-        </Segment>
-        <Message>
-          Already have an account? <Link to="/login">Login</Link>
-        </Message>
-      </Grid.Column>
-    </Grid>
-    <RegisterFooter />
+              <Button color="teal" fluid size="large" onClick={handleSubmit}>
+                Register
+              </Button>
+            </Form>
+          </Segment>
+          <Message>
+            Already have an account? <Link to="/login">Login</Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
+      <RegisterFooter />
     </>
   );
 };
