@@ -1,11 +1,10 @@
 using Application.Core;
 using Application.Interfaces;
 using Domain;
+using Domain.Enums;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Complaints
@@ -15,9 +14,8 @@ namespace Application.Complaints
         public class Command : IRequest<Result<Unit>>
         {
             public Complaint Complaint { get; set; }
-            // public IFormFile File { get; set; }
+            public IFormFile File { get; set; }
 
-            // public CreateComplaintDto createComplaintDto { get; set; }
         }
 
         public class CommandValidator : AbstractValidator<Command>
@@ -33,16 +31,17 @@ namespace Application.Complaints
             private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
 
-            private readonly IComplaintPhotoAccessor _complaintPhotoAccessor;
+            private readonly IPhotoAccessor _photoAccessor;
 
             public Handler(
                 DataContext context,
                 IUserAccessor userAccessor,
-                IComplaintPhotoAccessor complaintPhotoAccessor
+                IPhotoAccessor photoAccessor
+                
             )
             {
-                _complaintPhotoAccessor = complaintPhotoAccessor;
                 _userAccessor = userAccessor;
+                _photoAccessor = photoAccessor;
                 _context = context;
             }
 
@@ -51,14 +50,18 @@ namespace Application.Complaints
                 CancellationToken cancellationToken
             )
             {
+                request.Complaint.ComplaintStatus = ComplaintStatus.Filed;
+                request.Complaint.CreatedAt = DateTime.UtcNow;
 
-                var user = await _context.Users.FirstOrDefaultAsync(
-                    x => x.DisplayName == _userAccessor.GetUsername()
-                );
+                if (request.File != null)
+                {
+                    var photoUploadResult = await _photoAccessor.AddPhoto(request.File);
 
+                    request.Complaint.PhotoUrl = photoUploadResult.Url;
+                    request.Complaint.PublicId = photoUploadResult.PublicId;
+                }
 
-                 _context.Complaints.Add(request.Complaint);
-  
+                _context.Complaints.Add(request.Complaint);
 
                 var result = await _context.SaveChangesAsync() > 0;
 

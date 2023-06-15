@@ -13,8 +13,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Persistence;
-using Grpc.Net.ClientFactory;
-using Google.Cloud.Translate.V3;
+using Amazon.Comprehend;
+using Amazon.Translate;
+using System.Text.Json.Serialization;
+using Infrastructure.ComplaintTranslation;
 
 namespace API.Extensions
 {
@@ -83,11 +85,21 @@ namespace API.Extensions
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
-            services.AddScoped<IComplaintPhotoAccessor, ComplaintPhotoAccessor>();
             services.AddScoped<ImageService>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
             services.AddHttpContextAccessor();
+            services.AddScoped<IAmazonTranslate, AmazonTranslateClient>();
+            services.AddScoped<IAmazonComprehend, AmazonComprehendClient>();
+            services.AddScoped<AmazonTranslateService>();
+            services.AddScoped<ITranslationAccessor, TranslationAccessor>();
+    services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
+
+
+         
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<ComplaintCreate>();
             services.AddValidatorsFromAssemblyContaining<CleaningEventsCreate>();

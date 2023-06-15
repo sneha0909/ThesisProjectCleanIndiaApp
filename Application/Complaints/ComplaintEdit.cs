@@ -1,7 +1,5 @@
 using Application.Core;
-using AutoMapper;
-using Domain;
-using FluentValidation;
+using Domain.Enums;
 using MediatR;
 using Persistence;
 
@@ -11,39 +9,36 @@ namespace Application.Complaints
     {
         public class Command : IRequest<Result<Unit>>
         {
-            public Complaint Complaint { get; set; }
-        }
-
-           public class CommandValidator : AbstractValidator<Command>
-        {
-            public CommandValidator()
-            {
-                RuleFor(x => x.Complaint).SetValidator(new ComplaintValidator());
-            }
+            public Guid Id { get; set; }
+            public ComplaintStatus ComplaintStatus { get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
-            private readonly IMapper _mapper;
 
-            public Handler(DataContext context, IMapper mapper)
+            public Handler(DataContext context)
             {
-                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(
+                Command request,
+                CancellationToken cancellationToken
+            )
             {
-                var complaint = await _context.Complaints.FindAsync(request.Complaint.Id);
+                var complaint = await _context.Complaints.FindAsync(request.Id);
 
-                if(complaint == null) return null;
+                if (complaint == null)
+                    return Result<Unit>.Failure("Complaint not found");
 
-                _mapper.Map(request.Complaint, complaint);
+                complaint.ComplaintStatus = request.ComplaintStatus;
+                complaint.UpdatedAt = DateTime.UtcNow;
 
                 var result = await _context.SaveChangesAsync() > 0;
 
-                if (!result) return Result<Unit>.Failure("Failed to update activity");
+                if (!result)
+                    return Result<Unit>.Failure("Failed to update complaint status");
 
                 return Result<Unit>.Success(Unit.Value);
             }
