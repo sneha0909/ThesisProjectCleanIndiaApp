@@ -1,0 +1,64 @@
+.pledge-icon {
+    float: left;
+    /* border-style: solid; */
+    text-align: center;
+
+}
+
+.pledge-description {
+    overflow: hidden;
+    /* border-style: solid; */
+    width: 70rem;
+    display: inline-block;
+    position: relative;
+    height: 5rem;
+
+}
+
+.pledge-description h3 {
+    text-align: center;
+    color: green;
+}
+
+.pledgeButton1 {
+
+    text-align: center;
+    /* float: right; */
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    background-color: green;
+    border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+
+
+}
+
+
+@media screen and (max-width: 960px) {
+    .pledge-description {
+        overflow: hidden;
+        /* border-style: solid; */
+        width: 20rem;
+        display: inline-block;
+        position: relative;
+        height: 11rem;
+
+    }
+    .button {
+
+        text-align: center;
+        /* float: right; */
+        position: absolute;
+        background-color: green;
+       
+    
+    
+    }
+}
