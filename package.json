@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "client-app",
   "version": "0.1.0",
@@ -87,3 +88,6 @@
     ]
   }
 }
+=======
+{}
+>>>>>>> backend/master
